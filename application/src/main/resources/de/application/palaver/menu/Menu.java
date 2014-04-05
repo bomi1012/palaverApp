@@ -1,14 +1,14 @@
-package de.application.palaver.recipe;
+package de.application.palaver.menu;
 
 import java.util.Date;
 import java.util.List;
 
 import de.application.abstracts.entities.EntityName;
 import de.application.palaver.employee.Employee;
-import de.application.palaver.menu.Menu;
+import de.application.palaver.recipe.Recipe;
 
-public class Recipe extends EntityName implements IRecipe{
-	
+public class Menu extends EntityName implements IMenu {
+
 	/************************/
 	/** Getters and Setters */
 	/************************/
@@ -18,26 +18,23 @@ public class Recipe extends EntityName implements IRecipe{
 	public Employee getEmployee() { return m_employee; }
 	@Override
 	public void setEmployee(Employee employee) { m_employee = employee; }
-	
-	private List<Menu> m_menus;
+
+	private List<Recipe> m_recipes;
 	@Override
-	public List<Menu> getMenuList() { return m_menus; }
+	public List<Recipe> getRecipeList() { return m_recipes; 	}
 	@Override
-	public void setMenuList(List<Menu> menus) { m_menus = menus; }
+	public void setRecipeList(List<Recipe> recipes) { m_recipes = recipes; }
 	
-	/*****************/
-	/** Constructors */
-	/*****************/
 	
-	public Recipe() {
+	public Menu() {
 		super();
 	}
-	
-	public Recipe(long id, String name, Employee employee, List<Menu> menus,
+
+	public Menu(long id, String name, Employee employee, List<Recipe> recipes, 
 			Date createItem, Date updateItem, boolean active) {
 		super(id, name, createItem, updateItem, active);
 		m_employee = employee;
-		m_menus = menus;
+		m_recipes = recipes;
 	}
 
 }

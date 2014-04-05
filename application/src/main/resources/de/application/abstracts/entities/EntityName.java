@@ -1,6 +1,9 @@
 package de.application.abstracts.entities;
 
-abstract public class EntityName extends EntityId{
+import java.util.Date;
+
+
+abstract public class EntityName extends EntityInfo{
 
 	protected String m_name;	
 	public String getName() { return m_name; }
@@ -10,8 +13,8 @@ abstract public class EntityName extends EntityId{
 		super();
 	}
 
-	public EntityName(long id, String name) {
-		super(id);
+	public EntityName(long id, String name, Date createItem, Date updateItem, boolean active) {
+		super(id, createItem, updateItem, active);
 		m_name = name;
 	}
 }

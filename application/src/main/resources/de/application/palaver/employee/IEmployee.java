@@ -2,6 +2,7 @@ package de.application.palaver.employee;
 
 import java.util.List;
 
+import de.application.palaver.menu.Menu;
 import de.application.palaver.recipe.Recipe;
 
 public interface IEmployee {
@@ -20,4 +21,7 @@ public interface IEmployee {
 	
 	List<Recipe> getRecipeList();
 	void setRecipeList(List<Recipe> recipes);
+	
+	List<Menu> getMenuList();
+	void setMenuList(List<Menu> menus);
 }

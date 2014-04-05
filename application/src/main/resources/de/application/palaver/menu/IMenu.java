@@ -1,11 +1,11 @@
-package de.application.palaver.recipe;
+package de.application.palaver.menu;
 
 import java.util.List;
 
 import de.application.palaver.employee.Employee;
-import de.application.palaver.menu.Menu;
+import de.application.palaver.recipe.Recipe;
 
-public interface IRecipe {
+public interface IMenu {
 	long getId();
 	void setId(long id);
 	
@@ -15,6 +15,6 @@ public interface IRecipe {
 	Employee getEmployee();
 	void setEmployee(Employee employee);
 	
-	List<Menu> getMenuList();
-	void setMenuList(List<Menu> menus);
+	List<Recipe> getRecipeList();
+	void setRecipeList(List<Recipe> recipes);
 }

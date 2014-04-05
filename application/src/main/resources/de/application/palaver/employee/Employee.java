@@ -1,11 +1,13 @@
 package de.application.palaver.employee;
 
+import java.util.Date;
 import java.util.List;
 
-import de.application.abstracts.entities.EntityId;
+import de.application.abstracts.entities.EntityInfo;
+import de.application.palaver.menu.Menu;
 import de.application.palaver.recipe.Recipe;
 
-public class Employee extends EntityId implements IEmployee {
+public class Employee extends EntityInfo implements IEmployee {
 	
 	/************************/
 	/** Getters and Setters */
@@ -35,6 +37,12 @@ public class Employee extends EntityId implements IEmployee {
 	@Override
 	public void setRecipeList(List<Recipe> recipes) { m_recipes = recipes; }
 	
+	private List<Menu> m_menus;
+	@Override
+	public List<Menu> getMenuList() {return m_menus; }
+	@Override
+	public void setMenuList(List<Menu> menus) { m_menus = menus; }
+	
 	/*****************/
 	/** Constructors */
 	/*****************/
@@ -45,11 +53,13 @@ public class Employee extends EntityId implements IEmployee {
 
 	public Employee(
 			long id, String firstname, String lastname,	String nickname,
-			List<Recipe> recipes) {
-		super(id);
+			List<Recipe> recipes, List<Menu> menus,
+			Date createItem, Date updateItem, boolean active) {
+		super(id, createItem, updateItem, active);
 		m_firstname = firstname;
 		m_lastname = lastname;
 		m_nickname = nickname;
 		m_recipes = recipes;
+		m_menus = menus;
 	}
 }
