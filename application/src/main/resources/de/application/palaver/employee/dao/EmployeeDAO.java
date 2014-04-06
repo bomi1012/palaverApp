@@ -4,11 +4,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.MessageFormat;
 
-import de.application.abstracts.DB.AbstractDAO;
-import de.application.abstracts.DB.TablesEnum;
-import de.application.abstracts.DB.exceptions.ConnectException;
-import de.application.abstracts.DB.exceptions.DAOException;
 import de.application.palaver.employee.Employee;
+import de.helper.palaver.db.AbstractDAO;
+import de.helper.palaver.db.TablesEnum;
+import de.helper.palaver.exceptions.ConnectException;
+import de.helper.palaver.exceptions.DAOException;
 
 public class EmployeeDAO extends AbstractDAO {
 

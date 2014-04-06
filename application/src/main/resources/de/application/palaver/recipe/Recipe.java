@@ -3,9 +3,9 @@ package de.application.palaver.recipe;
 import java.util.Date;
 import java.util.List;
 
-import de.application.abstracts.entities.EntityName;
 import de.application.palaver.employee.Employee;
 import de.application.palaver.menu.Menu;
+import de.helper.palaver.entities.EntityName;
 
 public class Recipe extends EntityName implements IRecipe{
 	

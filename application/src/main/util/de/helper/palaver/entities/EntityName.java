@@ -1,4 +1,4 @@
-package de.application.abstracts.entities;
+package de.helper.palaver.entities;
 
 import java.util.Date;
 

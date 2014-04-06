@@ -1,14 +1,14 @@
-package de.application.palaver.employee.bean;
+package de.design.palaver;
 
 import javax.faces.bean.ManagedBean;
 
 import de.application.palaver.employee.Employee;
 import de.application.palaver.employee.service.EmployeeService;
 
-@ManagedBean(name = "emp")
-public class EmployeeBean {
+@ManagedBean(name = "index")
+public class IndexView {
 
-	public EmployeeBean() {
+	public IndexView() {
 		super();
 	}
 	

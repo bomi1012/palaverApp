@@ -1,4 +1,4 @@
-package de.application.abstracts.DB;
+package de.helper.palaver.db;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -8,12 +8,12 @@ import javax.sql.rowset.CachedRowSet;
 
 import com.sun.rowset.CachedRowSetImpl;
 
-import de.application.abstracts.DB.exceptions.ConnectException;
-import de.application.abstracts.DB.exceptions.DAOException;
-import de.application.abstracts.util.IConstants;
+import de.helper.palaver.constants.IDataBaseDic;
+import de.helper.palaver.exceptions.ConnectException;
+import de.helper.palaver.exceptions.DAOException;
 
 @SuppressWarnings("restriction")
-abstract public class AbstractDAO {
+abstract public class AbstractDAO implements IDataBaseDic{
 	
 	private ConnectionManager m_connector;	
 	protected ResultSet m_resultSet;
@@ -34,7 +34,7 @@ abstract public class AbstractDAO {
 			m_cache.populate(m_resultSet);	
 		} 
 		catch (Exception e) {
-			throw new DAOException(String.format(IConstants.DB_STATEMENT_ERROR, query, e.toString()));
+			throw new DAOException(String.format(DB_STATEMENT_ERROR, query, e.toString()));
 		}
 		finally {
 			m_connector.closeConnection();
@@ -54,7 +54,7 @@ abstract public class AbstractDAO {
 			m_lastId = m_resultSet.getLong(1);
 		} 
 		catch (Exception e)  {
-			throw new DAOException(String.format(IConstants.DB_STATEMENT_ERROR, query, e.toString()));
+			throw new DAOException(String.format(DB_STATEMENT_ERROR, query, e.toString()));
 		}
 		finally {
 			m_connector.closeConnection();	

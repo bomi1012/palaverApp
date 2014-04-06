@@ -1,4 +1,4 @@
-package de.application.abstracts.DB;
+package de.helper.palaver.db;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -7,11 +7,11 @@ import java.util.Properties;
 
 import com.mysql.jdbc.Driver;
 
-import de.application.abstracts.DB.exceptions.ConnectException;
-import de.application.abstracts.DB.exceptions.DAOException;
-import de.application.abstracts.util.IConstants;
+import de.helper.palaver.constants.IDataBaseDic;
+import de.helper.palaver.exceptions.ConnectException;
+import de.helper.palaver.exceptions.DAOException;
 
-public class ConnectionManager implements IConnectionManager {
+public class ConnectionManager implements IConnectionManager, IDataBaseDic {
 	
 	private Statement m_statement;
 	private Connection m_connection;
@@ -45,10 +45,10 @@ public class ConnectionManager implements IConnectionManager {
 
 	private void connect() throws ConnectException {
 		try {
-			m_connection = new Driver().connect(IConstants.DB_CONNECTION_URL, new Properties());
+			m_connection = new Driver().connect(DB_CONNECTION_URL, new Properties());
 			m_statement = m_connection.createStatement();
 		} catch (SQLException e) {
-			throw new ConnectException(IConstants.DB_CONNECTION_FAILED);
+			throw new ConnectException(DB_CONNECTION_FAILED);
 		}
 	}
 
@@ -57,7 +57,7 @@ public class ConnectionManager implements IConnectionManager {
 			m_statement.close();
 			m_connection.close();
 		} catch (Exception e) {
-			throw new ConnectException(IConstants.DB_CONNECTION_CLOSE_FAILAD);
+			throw new ConnectException(DB_CONNECTION_CLOSE_FAILAD);
 		}
 	}
 	

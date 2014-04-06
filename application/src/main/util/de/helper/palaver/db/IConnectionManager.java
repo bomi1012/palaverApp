@@ -1,10 +1,10 @@
-package de.application.abstracts.DB;
+package de.helper.palaver.db;
 
 import java.sql.Connection;
 import java.sql.Statement;
 
-import de.application.abstracts.DB.exceptions.ConnectException;
-import de.application.abstracts.DB.exceptions.DAOException;
+import de.helper.palaver.exceptions.ConnectException;
+import de.helper.palaver.exceptions.DAOException;
 
 public interface IConnectionManager {
 	Statement getStatement();
