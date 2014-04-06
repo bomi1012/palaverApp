@@ -55,7 +55,7 @@ public class Employee extends EntityInfo implements IEmployee {
 			long id, String firstname, String lastname,	String nickname,
 			List<Recipe> recipes, List<Menu> menus,
 			Date createItem, Date updateItem, boolean active) {
-		super(id, createItem, updateItem, active);
+		super(id, createItem, active);
 		m_firstname = firstname;
 		m_lastname = lastname;
 		m_nickname = nickname;

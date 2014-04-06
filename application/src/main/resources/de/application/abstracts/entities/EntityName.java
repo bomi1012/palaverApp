@@ -14,7 +14,7 @@ abstract public class EntityName extends EntityInfo{
 	}
 
 	public EntityName(long id, String name, Date createItem, Date updateItem, boolean active) {
-		super(id, createItem, updateItem, active);
+		super(id, createItem, active);
 		m_name = name;
 	}
 }
