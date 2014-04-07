@@ -13,7 +13,9 @@ public class IndexView {
 	}
 	
 	public String getEmployeeInfo() {
-		Employee e = EmployeeService.getInstance().getEmployeeById(1L); 
-				return e.getFirstname() + " " + e.getLastname();
+//		Employee e = EmployeeService.getInstance().getEmployeeById(1L); 
+//				return e.getFirstname() + " " + e.getLastname();
+		
+		return "Hallo, Thomas!";
 	}
 }
