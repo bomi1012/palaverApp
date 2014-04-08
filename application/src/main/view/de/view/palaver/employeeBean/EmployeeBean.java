@@ -7,7 +7,7 @@ import javax.faces.bean.ManagedBean;
 
 import de.application.palaver.employee.Employee;
 
-@ManagedBean(name = "emp")
+@ManagedBean(name = "empBean")
 public class EmployeeBean {
 
 	private List<Employee> m_employeeList;

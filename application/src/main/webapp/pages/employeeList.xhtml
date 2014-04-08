@@ -9,8 +9,8 @@
 
 <h:body>
 	<h:form>
-    <p:dataTable var="employee" value="#{emp.dataGrid}" styleClass="table table-hover"
-    filteredValue="#{emp.filter}">
+    <p:dataTable var="employee" value="#{empBean.dataGrid}" styleClass="table table-hover"
+    filteredValue="#{empBean.filter}">
         <p:column headerText="Vorname" filterBy="firstname" filterMatchMode="contains" filterStyle="width:200px" 
         style="width:50%">
             <h:outputText value="#{employee.firstname}" />
