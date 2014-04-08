@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:t="http://myfaces.apache.org/tomahawk"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j" xmlns:p="http://primefaces.org/ui">
+
+<body>
+	<ui:composition>
+		<!-- http://fortawesome.github.io/Font-Awesome/icons/ -->
+		<div class="body-nav body-nav-horizontal body-nav-fixed">
+			<div id="headmenu" class="container">
+				<ul>
+					<ui:fragment rendered="true">
+						<li><a href="index.xhtml"><i
+								class="icon-dashboard icon-large"></i> Dashboard </a></li>
+					</ui:fragment>
+					<ui:fragment rendered="true">
+						<li><a href="index.xhtml"><i
+								class="icon-shopping-cart icon-large"></i> Artikeln </a></li>
+					</ui:fragment>
+					<ui:fragment rendered="true">
+						<li><a href="employee.xhtml"> <i
+								class="icon-shopping-cart icon-large"></i>Mitarbeiter
+						</a></li>
+					</ui:fragment>
+					<ui:fragment rendered="true">
+						<li><a href="index.xhtml"> <i
+								class="icon-tasks icon-large"></i>Menu
+						</a></li>
+					</ui:fragment>
+				</ul>
+			</div>
+		</div>
+	</ui:composition>
+</body>
+</html>

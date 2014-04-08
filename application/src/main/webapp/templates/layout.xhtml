@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:t="http://myfaces.apache.org/tomahawk"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j" xmlns:p="http://primefaces.org/ui">
+
+<body>
+	<ui:composition>
+		<!-- FIXED TOP-MENU -->
+		<ui:insert name="fix-menu">
+			<ui:include src="/templates/elements/menu_fix.xhtml" />
+		</ui:insert>
+		<!-- FIXED TOP-MENU -->
+
+		<div id="body-container">
+			<div id="body-content">
+				<!-- HEAD MENU -->
+				<ui:insert name="head-menu">
+					<ui:include src="/templates/elements/menu_head.xhtml" />
+				</ui:insert>
+				<!-- HEAD MENU -->
+
+				<!-- MENU -->
+				<ui:insert name="help-menu">
+					<ui:include src="/templates/elements/menu_help.xhtml" />
+				</ui:insert>
+				<!-- MENU -->
+
+				<!-- CONTENT -->
+				<div id="content" class="page container">
+				<ui:insert name="content">
+					<ui:include id="include" src="#{layout.includedPage}" />
+				</ui:insert>
+				</div>
+				<!-- CONTENT -->
+			</div>
+		</div>
+		<!-- FOOTER -->
+		<ui:insert name="footer">
+			<ui:include src="/templates/elements/footer.xhtml" />
+		</ui:insert>
+		<!-- FOOTER -->
+	</ui:composition>
+</body>
+</html>
