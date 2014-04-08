@@ -8,6 +8,18 @@
 	xmlns:a4j="http://richfaces.org/a4j" xmlns:p="http://primefaces.org/ui">
 
 <h:body>
-	MITARBEITER
+	<h:form>
+    <p:dataTable var="employee" value="#{emp.dataGrid}" styleClass="table table-hover"
+    filteredValue="#{emp.filter}">
+        <p:column headerText="Vorname" filterBy="firstname" filterMatchMode="contains" filterStyle="width:200px" 
+        style="width:50%">
+            <h:outputText value="#{employee.firstname}" />
+        </p:column> 
+        <p:column headerText="Nachname">
+            <h:outputText value="#{employee.lastname}" />
+        </p:column>
+    </p:dataTable>
+
+</h:form>
 </h:body>
 </html>
