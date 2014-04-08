@@ -2,9 +2,6 @@ package de.design.palaver;
 
 import javax.faces.bean.ManagedBean;
 
-import de.application.palaver.employee.Employee;
-import de.application.palaver.employee.service.EmployeeService;
-
 @ManagedBean(name = "index")
 public class IndexView {
 
@@ -18,4 +15,6 @@ public class IndexView {
 		
 		return "Hallo, Thomas!";
 	}
+	
+
 }
