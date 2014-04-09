@@ -1,0 +1,26 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:t="http://myfaces.apache.org/tomahawk"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j" xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+	<div class='container'>
+
+	  	<h:form>  	
+  		<p:panel visible="true" styleClass="formLogin" >
+   		<h:panelGrid columns="2" styleClass="ui-table-none-border" style="width:100%">
+ 			<h:outputText value="Mitarbeiter: " styleClass="lable" />
+ 			<h:outputText value="Passwort: " for="pwd" styleClass="lable" />
+ 			<p:password id="pwd" style="width:238px"/>
+ 			<h:outputText />
+ 			<h:commandButton id="button" value="Login" action="#{loginBean.doLogin}" style="float:right"/>
+ 		</h:panelGrid> 
+   		</p:panel>
+   	</h:form>
+	</div>
+</h:body>
+</html>

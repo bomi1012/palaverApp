@@ -32,7 +32,7 @@ public class Menu extends EntityName implements IMenu {
 
 	public Menu(long id, String name, Employee employee, List<Recipe> recipes, 
 			Date createItem, Date updateItem, boolean active) {
-		super(id, name, createItem, updateItem, active);
+		super(id, name, createItem);
 		m_employee = employee;
 		m_recipes = recipes;
 	}

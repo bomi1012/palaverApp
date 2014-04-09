@@ -8,12 +8,15 @@
 	xmlns:a4j="http://richfaces.org/a4j" xmlns:p="http://primefaces.org/ui">
 
 <h:body>
-	<h:form>
+
+<div class="row">
+  <div class="span11">
+<h:form>
     <p:dataTable var="employee" value="#{empBean.dataGrid}" styleClass="table table-hover"
     filteredValue="#{empBean.filter}">
-        <p:column headerText="Vorname" filterBy="firstname" filterMatchMode="contains" filterStyle="width:200px" 
+        <p:column headerText="Vorname" filterBy="fullname" filterMatchMode="contains" filterStyle="width:150px" 
         style="width:50%">
-            <h:outputText value="#{employee.firstname}" />
+            <h:outputText value="#{employee.fullname}" />
         </p:column> 
         <p:column headerText="Nachname">
             <h:outputText value="#{employee.lastname}" />
@@ -21,5 +24,12 @@
     </p:dataTable>
 
 </h:form>
+</div>
+  <div class="span2">
+	<h>INFORMATION</h>
+</div>
+</div>
+
+	
 </h:body>
 </html>

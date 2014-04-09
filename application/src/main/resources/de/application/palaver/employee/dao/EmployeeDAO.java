@@ -38,8 +38,9 @@ public class EmployeeDAO extends AbstractDAO {
 	}
 
 	private Employee setEm(ResultSet resultSet) throws SQLException {
-		return new Employee(resultSet.getLong("id"),
-				resultSet.getString("name"), resultSet.getString("vorname"),
-				resultSet.getString("benutzername"), null, null, null, null, true);
+//		return new Employee(resultSet.getLong("id"),
+//				resultSet.getString("name"), resultSet.getString("vorname"),
+//				resultSet.getString("benutzername"), null, null, null, null);
+		return null;
 	}
 }

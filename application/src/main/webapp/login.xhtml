@@ -1,0 +1,25 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:t="http://myfaces.apache.org/tomahawk"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j" xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>#{msg['template.cafe.palaver']} -
+		#{msg['template.dashboard']}</title>
+	<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+	<script src="http://code.jquery.com/jquery-1.9.0.js"></script>
+	<link href="resources/css/customize-template.css" type="text/css"
+		media="screen, projection" rel="stylesheet" />
+	<style>
+</style>
+</h:head>
+<h:body>
+	<ui:insert name="palaver">
+		<ui:include src="/templates/layout.xhtml" />
+	</ui:insert>
+</h:body>
+</html>

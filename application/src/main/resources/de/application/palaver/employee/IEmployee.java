@@ -10,6 +10,8 @@ public interface IEmployee {
 	long getId();
 	void setId(long id);
 	
+	/////////////////////////////////////
+	
 	String getFirstname();
 	void setFirstname(String firstname);
 	
@@ -19,9 +21,28 @@ public interface IEmployee {
 	String getNickname();
 	void setNickmane(String nickname);
 	
+	String getPassword();
+	void setPassword(String password);
+	
+	String getEmail();
+	void setEmail(String email);
+	
+	String getHandy();
+	void setHandy(String handy);
+	
+	String getPhone();
+	void setPhone(String phone);
+	
+	///
+	/// Relations
+	///
+	
 	List<Recipe> getRecipeList();
 	void setRecipeList(List<Recipe> recipes);
 	
 	List<Menu> getMenuList();
 	void setMenuList(List<Menu> menus);
+	
+	List<Role> getRoleList();
+	void setRole(List<Role> roles);
 }

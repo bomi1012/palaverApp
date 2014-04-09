@@ -35,7 +35,7 @@ public class Recipe extends EntityName implements IRecipe{
 	
 	public Recipe(long id, String name, Employee employee, List<Menu> menus,
 			Date createItem, Date updateItem, boolean active) {
-		super(id, name, createItem, updateItem, active);
+		super(id, name, createItem);
 		m_employee = employee;
 		m_menus = menus;
 	}

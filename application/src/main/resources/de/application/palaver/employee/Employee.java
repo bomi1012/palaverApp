@@ -5,9 +5,9 @@ import java.util.List;
 
 import de.application.palaver.menu.Menu;
 import de.application.palaver.recipe.Recipe;
-import de.helper.palaver.entities.EntityInfo;
+import de.helper.palaver.entities.Entity;
 
-public class Employee extends EntityInfo implements IEmployee {
+public class Employee extends Entity implements IEmployee {
 	
 	/************************/
 	/** Getters and Setters */
@@ -25,11 +25,37 @@ public class Employee extends EntityInfo implements IEmployee {
 	@Override
 	public void setLastname(String lastname) { m_lastname = lastname; }
 	
+	public String getFullname() { return m_firstname + " " + m_lastname; }
+	
 	private String m_nickname;
 	@Override
 	public String getNickname() { return m_nickname; }
 	@Override
 	public void setNickmane(String nickname) { m_nickname = nickname; }	
+	
+	private String m_password;
+	@Override
+	public String getPassword() { return m_password; }
+	@Override
+	public void setPassword(String password) { m_password = password; }
+	
+	private String m_email;
+	@Override
+	public String getEmail() { return m_email; }
+	@Override
+	public void setEmail(String email) { m_email = email; }
+	
+	private String m_handy;
+	@Override
+	public String getHandy() { return m_handy; }
+	@Override
+	public void setHandy(String handy) { m_handy = handy; }
+	
+	private String m_phone;
+	@Override
+	public String getPhone() { return m_phone; }
+	@Override
+	public void setPhone(String phone) { m_phone = phone; }
 	
 	private List<Recipe> m_recipes;
 	@Override
@@ -43,6 +69,12 @@ public class Employee extends EntityInfo implements IEmployee {
 	@Override
 	public void setMenuList(List<Menu> menus) { m_menus = menus; }
 	
+	private List<Role> m_roles; 
+	@Override
+	public List<Role> getRoleList() { return m_roles; }
+	@Override
+	public void setRole(List<Role> roles) { m_roles = roles; }
+	
 	/*****************/
 	/** Constructors */
 	/*****************/
@@ -51,15 +83,36 @@ public class Employee extends EntityInfo implements IEmployee {
 		super();
 	}
 
+	/**
+	 * @author bomi
+	 * 
+	 * @param id employeeId LONG
+	 * @param firstname vorname STRING 
+	 * @param lastname nachmane STRING
+	 * @param nickname spitzname STRING
+	 * @param password passwort STRING
+	 * @param email email STRING
+	 * @param handy handy STRING
+	 * @param phone telefon STRING
+	 * @param recipes rezepte LIST<{@link Recipe}>
+	 * @param menus menus LIST<{@link Menu}>
+	 * @param roles rolle LIST<{@link Role}>
+	 * @param createItem erstellDatum DATE 
+	 */
 	public Employee(
 			long id, String firstname, String lastname,	String nickname,
-			List<Recipe> recipes, List<Menu> menus,
-			Date createItem, Date updateItem, boolean active) {
-		super(id, createItem, active);
+			String password, String email, String handy, String phone,
+			List<Recipe> recipes, List<Menu> menus, List<Role> roles, Date createItem) {
+		super(id, createItem);
 		m_firstname = firstname;
 		m_lastname = lastname;
 		m_nickname = nickname;
+		m_password = password;
+		m_email = email;
+		m_handy = handy;
+		m_phone = phone;
 		m_recipes = recipes;
 		m_menus = menus;
+		m_roles = roles;
 	}
 }

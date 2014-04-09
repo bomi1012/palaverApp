@@ -3,7 +3,7 @@ package de.helper.palaver.entities;
 import java.util.Date;
 
 
-abstract public class EntityName extends EntityInfo{
+abstract public class EntityName extends Entity{
 
 	protected String m_name;	
 	public String getName() { return m_name; }
@@ -13,8 +13,8 @@ abstract public class EntityName extends EntityInfo{
 		super();
 	}
 
-	public EntityName(long id, String name, Date createItem, Date updateItem, boolean active) {
-		super(id, createItem, active);
+	public EntityName(long id, String name, Date createItem) {
+		super(id, createItem);
 		m_name = name;
 	}
 }

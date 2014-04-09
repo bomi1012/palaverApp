@@ -1,18 +1,25 @@
 package de.helper.palaver.entities;
 
-abstract public class EntityId {
+import java.util.Date;
+
+abstract public class Entity {
 	
 	protected long m_id;
 	public long getId() { return m_id; }
 	public void setId(long id) { m_id = id; }
 	
-	public EntityId() {
+	protected Date m_createDate;
+	public Date getCreateDate() { return m_createDate; }
+	public void setCreateDate(Date createDate) { m_createDate = createDate; }
+	
+	public Entity() {
 		super();
 	}
 	
-	public EntityId(long id) {
+	public Entity(long id, Date createDate) {
 		super();
 		m_id = id;
+		m_createDate = createDate;
 	}
 	
 	
@@ -29,9 +36,9 @@ abstract public class EntityId {
 			return true;
 		if (obj == null)
 			return false;
-		if (!(obj instanceof EntityId))
+		if (!(obj instanceof Entity))
 			return false;
-		EntityId other = (EntityId) obj;
+		Entity other = (Entity) obj;
 		if (m_id != other.m_id)
 			return false;
 		return true;
