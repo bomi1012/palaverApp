@@ -9,7 +9,6 @@
 
 <h:body>
 	<div class='container'>
-
 	  	<h:form>  	
   		<p:panel visible="true" styleClass="formLogin" >
    		<h:panelGrid columns="2" styleClass="ui-table-none-border" style="width:100%">
@@ -17,7 +16,7 @@
  			<h:outputText value="Passwort: " for="pwd" styleClass="lable" />
  			<p:password id="pwd" style="width:238px"/>
  			<h:outputText />
- 			<h:commandButton id="button" value="Login" action="#{loginBean.doLogin}" style="float:right"/>
+ 			<h:commandButton id="button" value="Login" action="#{loginBean.onLogin}" style="float:right"/>
  		</h:panelGrid> 
    		</p:panel>
    	</h:form>

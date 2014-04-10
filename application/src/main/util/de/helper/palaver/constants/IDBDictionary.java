@@ -1,10 +1,7 @@
 package de.helper.palaver.constants;
 
 
-public interface IDataBaseDic {
-
-	//Connection
-	String 		DB_CONNECTION_URL = "jdbc:mysql://localhost:3306/test?user=root&password=root";
+public interface IDBDictionary {
 	
 	//Exceptions	
 	String		DB_CONNECTION_FAILED = "ERROR: Connection failed.";

@@ -8,12 +8,12 @@ import javax.sql.rowset.CachedRowSet;
 
 import com.sun.rowset.CachedRowSetImpl;
 
-import de.helper.palaver.constants.IDataBaseDic;
+import de.helper.palaver.constants.IDBDictionary;
 import de.helper.palaver.exceptions.ConnectException;
 import de.helper.palaver.exceptions.DAOException;
 
 @SuppressWarnings("restriction")
-abstract public class AbstractDAO implements IDataBaseDic{
+abstract public class AbstractDAO implements IDBDictionary{
 	
 	private ConnectionManager m_connector;	
 	protected ResultSet m_resultSet;
