@@ -1,5 +1,7 @@
 package de.application.palaver.employee.service;
 
+import java.util.List;
+
 import de.application.palaver.employee.Employee;
 import de.application.palaver.employee.dao.EmployeeDAO;
 
@@ -22,6 +24,20 @@ public class EmployeeService implements IEmployeeService{
 		} catch (Exception exp) {
 			exp.printStackTrace();
 		} 
+		return null;
+	}
+
+	public Employee findEmployee(String username, String password) {
+		try {
+			return EmployeeDAO.getInstance().findEmployeeByNameAndPassword(username, password);
+		} catch (Exception exp) {
+			exp.printStackTrace();
+		} 
+		return null;
+	}
+
+	public List<Employee> getAll() {
+		// TODO Auto-generated method stub
 		return null;
 	}	
 }

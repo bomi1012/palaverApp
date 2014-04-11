@@ -115,4 +115,12 @@ public class Employee extends Entity implements IEmployee {
 		m_menus = menus;
 		m_roles = roles;
 	}
+	
+	/**temp*/
+	public Employee(long id, String firstname, String lastname, String password) {
+		super(id, null);
+		m_firstname = firstname;
+		m_lastname = lastname;
+		m_password = password;
+	}
 }

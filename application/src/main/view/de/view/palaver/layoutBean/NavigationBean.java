@@ -55,6 +55,4 @@ public class NavigationBean implements Serializable{
 		return  m_request.getRequestURI();
 	}
 
-
-
 }

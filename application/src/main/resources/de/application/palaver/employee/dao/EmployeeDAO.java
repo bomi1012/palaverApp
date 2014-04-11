@@ -10,12 +10,15 @@ import de.helper.palaver.db.TablesEnum;
 import de.helper.palaver.exceptions.ConnectException;
 import de.helper.palaver.exceptions.DAOException;
 
+@SuppressWarnings("serial")
 public class EmployeeDAO extends AbstractDAO {
 
 	private static EmployeeDAO m_instance = null;
 	private Employee m_employee;
 	private static final String GET_EMPLOYEE_BY_ID = "SELECT * FROM "
 			+ TablesEnum.EMPLOYEE.getName() + " WHERE id = {0}";
+	private static final String 	GET_EMPLOYEE_BY_NAME_AND_PASSWORD = "SELECT * FROM "
+			+ TablesEnum.EMPLOYEE.getName() + " WHERE benutzername = \"{0}\" ORDER BY id";
 
 	public EmployeeDAO() {
 		super();
@@ -38,9 +41,18 @@ public class EmployeeDAO extends AbstractDAO {
 	}
 
 	private Employee setEm(ResultSet resultSet) throws SQLException {
-//		return new Employee(resultSet.getLong("id"),
-//				resultSet.getString("name"), resultSet.getString("vorname"),
-//				resultSet.getString("benutzername"), null, null, null, null);
-		return null;
+		return new Employee(resultSet.getLong("id"),
+				resultSet.getString("vorname"), resultSet.getString("name"),
+				resultSet.getString("passwort"));
+	}
+
+	public Employee findEmployeeByNameAndPassword(String username,
+			String password) throws ConnectException, DAOException, SQLException {
+		m_employee = new Employee();
+		m_resultSet = getManaged(MessageFormat.format(GET_EMPLOYEE_BY_NAME_AND_PASSWORD, username.toString()));
+		while (m_resultSet.next()) {
+			m_employee = setEm(m_resultSet);
+		}
+		return m_employee;
 	}
 }

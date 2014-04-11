@@ -9,17 +9,52 @@
 
 <h:body>
 	<div class='container'>
-	  	<h:form>  	
-  		<p:panel visible="true" styleClass="formLogin" >
-   		<h:panelGrid columns="2" styleClass="ui-table-none-border" style="width:100%">
- 			<h:outputText value="Mitarbeiter: " styleClass="lable" />
- 			<h:outputText value="Passwort: " for="pwd" styleClass="lable" />
- 			<p:password id="pwd" style="width:238px"/>
- 			<h:outputText />
- 			<h:commandButton id="button" value="Login" action="#{loginBean.onLogin}" style="float:right"/>
- 		</h:panelGrid> 
-   		</p:panel>
-   	</h:form>
+		<div class="signin-row row">
+			<div class="span4"></div>
+			<div class="span8">
+				<div class="container-signin">
+					<legend>Anmeldung</legend>
+					<h:form id='loginForm'>
+						<div class="form-inner">
+							<div class="input-prepend">
+								<span class="add-on" rel="tooltip" title="Username or E-Mail Address">
+								<i class="icon-user"></i></span>
+								<p:autoComplete id="acSimple"
+								completeMethod="#{login.complete}" 
+								value="#{loginBean.selectedEmployee}" />
+								<p:watermark for="acSimple" value="Vorname..." /> 
+							</div>
+							<div class="input-prepend">
+								<span class="add-on" rel="tooltip" title="Passwort eingeben">
+								<i class="icon-key"></i></span>
+								<p:password id="paswordLogin" styleClass="span6" />
+							</div>
+						</div>
+						<footer class="signin-actions"> 
+							<h:commandButton value="Anmelden" id="submitLogin" 
+							type="submit" action="#{loginBean.onLogin}" styleClass="btn btn-primary rigth" />				
+						</footer>
+					</h:form>
+				</div>
+			</div>
+			<div class="span3"></div>
+		</div>
+		
+		
+		<div class="signin-row row">
+			<div class="span4"></div>
+			<div class="span8">
+				<div class="well well-small well-shadow">
+					<legend class="lead">Additional Content</legend>
+					Add additional content here.
+				</div>
+			</div>
+			<div class="span8"></div>
+		</div>
+
 	</div>
+
+
+
 </h:body>
 </html>

@@ -1,5 +1,6 @@
 package de.helper.palaver.db;
 
+import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -13,7 +14,7 @@ import de.helper.palaver.exceptions.ConnectException;
 import de.helper.palaver.exceptions.DAOException;
 
 @SuppressWarnings("restriction")
-abstract public class AbstractDAO implements IDBDictionary{
+abstract public class AbstractDAO implements IDBDictionary, Serializable{
 	
 	private ConnectionManager m_connector;	
 	protected ResultSet m_resultSet;
