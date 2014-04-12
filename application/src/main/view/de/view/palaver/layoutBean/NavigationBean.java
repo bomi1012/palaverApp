@@ -27,10 +27,7 @@ public class NavigationBean implements Serializable{
 		String page = PATH + "dashboard.xhtml";
 		if(FacesContext.getCurrentInstance().getExternalContext()
 				.getSessionMap().get(IBeanDictionary.AUTHORIZED_USER) != null) {
-			
-			System.out.print(FacesContext.getCurrentInstance().getExternalContext()
-				.getSessionMap().get(IBeanDictionary.AUTHORIZED_USER));
-			
+	
 			String uri = getApplicationUri();
 			if (uri.contains("/index.xhtml")) {
 				page =  PATH + "dashboard.xhtml";
@@ -46,24 +43,15 @@ public class NavigationBean implements Serializable{
 		return page;
 	}
 	
-    public void redirectToLogin() {
+    public void redirectTo(String page) {
     	try {
 			FacesContext.getCurrentInstance()
-			.getExternalContext().redirect("login.xhtml");
+			.getExternalContext().redirect(page);
 		} catch (IOException exp) {
 			exp.printStackTrace();
 		}	
     }
 
-    public void redirectToIndex() {
-    	try {
-			FacesContext.getCurrentInstance()
-			.getExternalContext().redirect("index.xhtml");
-		} catch (IOException exp) {
-			exp.printStackTrace();
-		}		
-    }
-	
 	private String getApplicationUri() {
 		m_facesContext = FacesContext.getCurrentInstance();
 		m_request = (HttpServletRequest) m_facesContext.getExternalContext().getRequest();

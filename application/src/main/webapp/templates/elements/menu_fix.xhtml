@@ -17,6 +17,12 @@
 					<div id="app-nav-top-bar" class="nav-collapse">
 						<h:form>
 							<ul class="nav pull-right">
+								
+								<ui:fragment rendered="#{loginBean.loggedIn}">
+									<li><p:outputLabel value="Du bist als Mischa algemeldet" 
+									style="margin-top:-10px; color: darkgrey; margin-right:40px"/></li>
+								</ui:fragment>
+							
 								<ui:fragment rendered="#{loginBean.loggedIn}">
 									<li><p:commandLink id="logoutUser" style="margin-top:-20px"
 											actionListener="#{loginBean.onLogout}" ajax="false">

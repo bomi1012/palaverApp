@@ -67,7 +67,7 @@ public class LoginBean implements Serializable {
 		    				initEmployee(employee, true);
 		    	            findAllRolesForEmployee();
 		    	            saveResultToSessionMap(); 		    	            
-		    	            navigationBean.redirectToIndex();
+		    	            navigationBean.redirectTo("index.xhtml");
 						} else {
 					    	FacesContext context = FacesContext.getCurrentInstance();
 					    	context.addMessage("msg", new FacesMessage(
@@ -79,14 +79,13 @@ public class LoginBean implements Serializable {
 					} 					
 				} 
 			}
-    	} 
-        navigationBean.redirectToLogin();         
+    	}           
     }
     
     public void onLogout() {
     	initEmployee(null, false);
     	saveResultToSessionMap();
-    	navigationBean.redirectToLogin(); 
+    	navigationBean.redirectTo("login.xhtml"); 
     }  
     
 	public List<String> completeEmployee(String query) {  
