@@ -4,14 +4,18 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
 
 import de.application.palaver.employee.Employee;
 import de.application.palaver.employee.service.EmployeeService;
+import de.application.palaver.employee.service.RoleService;
 import de.helper.palaver.constants.IBeanDictionary;
+import de.helper.palaver.util.Encrypt;
  
  
 @ManagedBean
@@ -31,14 +35,9 @@ public class LoginBean implements Serializable {
     private boolean m_loggedIn = false;
     public boolean isLoggedIn() { return m_loggedIn; }
     
+    private List<Employee> m_employeeList;
+    private Encrypt m_encrypt;
     private Employee m_employee;
-    private List<Employee> m_employees;
-    
-	private Employee m_selectedEmployee;
-    public Employee getSelectedEmployee() { return m_selectedEmployee; }
-    public void setSelectedEmployee(Employee selectedEmployee) { m_selectedEmployee = selectedEmployee; }  
- 
-    
     
     @ManagedProperty(value="#{navBean}")
     private NavigationBean navigationBean;
@@ -50,58 +49,87 @@ public class LoginBean implements Serializable {
      
     public LoginBean() {
     	super();    
-    	m_employees = EmployeeService.getInstance().getAll();
+    	m_employeeList = EmployeeService.getInstance().getAllOnlyTable();
+    	m_employee = null;
+    	m_encrypt = new Encrypt();
     }
     
     /**
      * Login operation.
      * @return
      */
-    public String onLogin() {
-    	m_username = "Kai";
-    	m_password = "12";
-    	m_employee = EmployeeService.getInstance().findEmployee(m_username, m_password);
-        if (m_username != null && m_password != null) {
-            m_loggedIn = true;
-            saveResultToSessionMap();            
-            return navigationBean.redirectToIndex();
-        }
-        return navigationBean.redirectToLogin();         
+    public void onLogin(ActionEvent actionEvent) {
+    	if (m_username != null && m_password != null) {
+	    	for (Employee employee : m_employeeList) {	    		
+				if(employee.getNickname().equalsIgnoreCase(m_username)) {					
+		    		try {
+		    			if(employee.getPassword().equals(m_encrypt.encryptPassword(m_password))) {
+		    				initEmployee(employee, true);
+		    	            findAllRolesForEmployee();
+		    	            saveResultToSessionMap(); 		    	            
+		    	            navigationBean.redirectToIndex();
+						} else {
+					    	FacesContext context = FacesContext.getCurrentInstance();
+					    	context.addMessage("msg", new FacesMessage(
+					    			FacesMessage.SEVERITY_INFO,"Fehler bei der Anmeldung!", 
+					    			"Eingegebes Passwort ist falsch!"));
+						}						
+					} catch (Exception exp) {
+						exp.printStackTrace();
+					} 					
+				} 
+			}
+    	} 
+        navigationBean.redirectToLogin();         
     }
     
-    public List<Employee> completeEmployee(String query) {  
-        List<Employee> employees = new ArrayList<Employee>();          
-        for(Employee employee : m_employees) {  
-            if(employee.getNickname().startsWith(query))  
-                employees.add(employee);  
+    public void onLogout() {
+    	initEmployee(null, false);
+    	saveResultToSessionMap();
+    	navigationBean.redirectToLogin(); 
+    }  
+    
+	public List<String> completeEmployee(String query) {  
+        List<String> employees = new ArrayList<String>();          
+        for(Employee employee : m_employeeList) {  
+            if(employee.getNickname().toLowerCase().startsWith(query.toLowerCase()))  
+                employees.add(employee.getNickname());  
         }            
         return employees;  
     } 
- 
-    
-    
+
+	/*
+	 * ###################
+	 * #				 #
+	 * # PRIVATE METHODE #
+	 * #				 #
+	 * ################### 
+	 */
+
+	private void initEmployee(Employee employee, boolean login) {
+		if (login) {
+	        m_loggedIn = true;  
+	        m_employee = employee;
+		} else {
+			m_loggedIn = false;  
+	        m_employee = null;
+	        m_username = null;
+		}
+	}
+	
 	private void saveResultToSessionMap() {
 		FacesContext.getCurrentInstance()
 			.getExternalContext()
 			.getSessionMap()
-			.put(IBeanDictionary.LOGIN_IN_SESSION, m_loggedIn);		
+			.put(IBeanDictionary.AUTHORIZED_USER, m_employee);		
 	}
 	
+    private void findAllRolesForEmployee() {
+    	if (m_employee != null) {
+    		m_employee.setRole(RoleService.getInstance().findRolesByEmployeeId(m_employee.getId()));
+    	}
+	}
 
 
-//    /**
-//     * Logout operation.
-//     * @return
-//     */
-//    public String doLogout() {
-//        // Set the paremeter indicating that user is logged in to false
-//        loggedIn = false;
-//         
-//        // Set logout message
-//        FacesMessage msg = new FacesMessage("Logout success!", "INFO MSG");
-//        msg.setSeverity(FacesMessage.SEVERITY_INFO);
-//        FacesContext.getCurrentInstance().addMessage(null, msg);
-//         
-//        return navigationBean.toLogin();
-//    }    
+  
 }

@@ -12,27 +12,31 @@
 		<div class="signin-row row">
 			<div class="span4"></div>
 			<div class="span8">
+			<h:form id="ttt">
+			   <p:messages id="msg" showDetail="true" autoUpdate="true" closable="true" />  
+			</h:form>
 				<div class="container-signin">
 					<legend>Anmeldung</legend>
-					<h:form id='loginForm'>
+					<h:form id='loginForm'>					
 						<div class="form-inner">
 							<div class="input-prepend">
 								<span class="add-on" rel="tooltip" title="Username or E-Mail Address">
 								<i class="icon-user"></i></span>
-								<p:autoComplete id="acSimple"
-								completeMethod="#{login.complete}" 
-								value="#{loginBean.selectedEmployee}" />
-								<p:watermark for="acSimple" value="Vorname..." /> 
+								<p:autoComplete id="logUser" styleClass="width336"
+								completeMethod="#{loginBean.completeEmployee}"
+								value="#{loginBean.username}"/>
+								<p:watermark for="logUser" value="Benutzername..." /> 
 							</div>
 							<div class="input-prepend">
 								<span class="add-on" rel="tooltip" title="Passwort eingeben">
 								<i class="icon-key"></i></span>
-								<p:password id="paswordLogin" styleClass="span6" />
+								<p:password id="paswordLogin" styleClass="span5" value="#{loginBean.password}"/>
+								<p:watermark for="paswordLogin" value="Passwort..." /> 
 							</div>
 						</div>
 						<footer class="signin-actions"> 
-							<h:commandButton value="Anmelden" id="submitLogin" 
-							type="submit" action="#{loginBean.onLogin}" styleClass="btn btn-primary rigth" />				
+							<h:commandButton value="Anmelden" id="submitLogin" update="MessageId"
+							type="submit" actionListener="#{loginBean.onLogin}" styleClass="btn btn-primary rigth"  />				
 						</footer>
 					</h:form>
 				</div>

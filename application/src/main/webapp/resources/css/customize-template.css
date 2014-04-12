@@ -1296,11 +1296,11 @@ input[type="color"],
   -moz-border-radius: 3px;
   border-radius: 3px;
 }
-input,
+/*input,
 textarea,
 .uneditable-input {
   width: 206px;
-}
+} */
 textarea {
   height: auto;
 }
@@ -11460,4 +11460,13 @@ body > #body-container {
 ***/
 #body-content {
   padding-top: 110px;
+}
+
+/***
+*
+***/
+
+
+.width336 input{
+	width:336px;
 }

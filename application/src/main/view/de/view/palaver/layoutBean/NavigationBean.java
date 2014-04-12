@@ -1,5 +1,6 @@
 package de.view.palaver.layoutBean;
 
+import java.io.IOException;
 import java.io.Serializable;
 
 import javax.faces.bean.ManagedBean;
@@ -25,14 +26,18 @@ public class NavigationBean implements Serializable{
 	public String getIncludedPage() { 
 		String page = PATH + "dashboard.xhtml";
 		if(FacesContext.getCurrentInstance().getExternalContext()
-				.getSessionMap().get(IBeanDictionary.LOGIN_IN_SESSION) != null) {
+				.getSessionMap().get(IBeanDictionary.AUTHORIZED_USER) != null) {
+			
+			System.out.print(FacesContext.getCurrentInstance().getExternalContext()
+				.getSessionMap().get(IBeanDictionary.AUTHORIZED_USER));
+			
 			String uri = getApplicationUri();
 			if (uri.contains("/index.xhtml")) {
 				page =  PATH + "dashboard.xhtml";
 			} else if (uri.contains("/employee.xhtml")) {
 				page =  PATH + "employeeList.xhtml";
 			} else if (uri.contains("/login.xhtml")) {
-				page =  PATH + "loginForm.xhtml";
+				page =  PATH + "dashboard.xhtml";
 			} 
 			return page;
 		} else {
@@ -41,12 +46,22 @@ public class NavigationBean implements Serializable{
 		return page;
 	}
 	
-    public String redirectToLogin() {
-        return "/login.xhtml?faces-redirect=true";
+    public void redirectToLogin() {
+    	try {
+			FacesContext.getCurrentInstance()
+			.getExternalContext().redirect("login.xhtml");
+		} catch (IOException exp) {
+			exp.printStackTrace();
+		}	
     }
 
-    public String redirectToIndex() {
-        return "/index.xhtml?faces-redirect=true";
+    public void redirectToIndex() {
+    	try {
+			FacesContext.getCurrentInstance()
+			.getExternalContext().redirect("index.xhtml");
+		} catch (IOException exp) {
+			exp.printStackTrace();
+		}		
     }
 	
 	private String getApplicationUri() {

@@ -1,7 +1,7 @@
 package de.helper.palaver.db;
 
 public enum TablesEnum {
-	EMPLOYEE("mitarbeiter"), 
+	EMPLOYEE("employee"), 
 	RECIPE("test");
 	
 	private String m_table;

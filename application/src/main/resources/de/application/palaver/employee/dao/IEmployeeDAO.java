@@ -9,7 +9,8 @@ import de.helper.palaver.exceptions.ConnectException;
 import de.helper.palaver.exceptions.DAOException;
 
 public interface IEmployeeDAO extends ICUD {
-	List<Employee> findAll() throws ConnectException, DAOException, SQLException;
+
+	List<Employee> findAll(boolean complete) throws ConnectException, DAOException, SQLException;
 	Employee findById(long id) throws ConnectException, DAOException, SQLException;
 	Employee findByNameAndPassword(String name, String password) throws ConnectException, DAOException, SQLException;
 }

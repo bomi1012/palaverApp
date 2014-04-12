@@ -3,6 +3,7 @@ package de.application.palaver.employee.dao;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.MessageFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 import de.application.palaver.employee.Employee;
@@ -16,6 +17,10 @@ public class EmployeeDAO extends AbstractDAO implements IEmployeeDAO {
 
 	private static EmployeeDAO m_instance = null;
 	private Employee m_employee;
+	private List<Employee> m_employeeList;
+	
+	private static final String GET_ALL_EMPLOYEES = "SELECT * FROM "
+			+ TablesEnum.EMPLOYEE.getName();
 	private static final String GET_EMPLOYEE_BY_ID = "SELECT * FROM "
 			+ TablesEnum.EMPLOYEE.getName() + " WHERE id = {0}";
 	private static final String 	GET_EMPLOYEE_BY_NAME_AND_PASSWORD = "SELECT * FROM "
@@ -41,12 +46,20 @@ public class EmployeeDAO extends AbstractDAO implements IEmployeeDAO {
 		}
 		return m_employee;
 	}
-	
+
 	@Override
-	public List<Employee> findAll() throws ConnectException, DAOException,
+	public List<Employee> findAll(boolean complete) throws ConnectException, DAOException,
 			SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		m_employeeList = new ArrayList<Employee>();
+		m_resultSet = getManaged(GET_ALL_EMPLOYEES);
+		while (m_resultSet.next()) {
+			if(!complete) {
+				m_employeeList.add(setEmployee(m_resultSet));
+			} else {
+				m_employeeList.add(setEmployeeComplete(m_resultSet));
+			}
+		}
+		return m_employeeList;
 	}
 	
 	@Override
@@ -59,7 +72,7 @@ public class EmployeeDAO extends AbstractDAO implements IEmployeeDAO {
 		}
 		return m_employee;
 	}
-	
+
 	@Override
 	public long create() {
 		// TODO Auto-generated method stub
@@ -78,15 +91,31 @@ public class EmployeeDAO extends AbstractDAO implements IEmployeeDAO {
 		
 	}
 	
-	////// PRIVATE METHODE ////////
-	
+	////// PRIVATE METHODE ////////	
 	private Employee setEmployee(ResultSet resultSet) throws SQLException {
 		return new Employee(
 				resultSet.getLong("id"),
 				resultSet.getString("firstname"), 
 				resultSet.getString("lastname"),
-				resultSet.getString("password"));
+				resultSet.getString("nickname"),
+				resultSet.getString("password"), 
+				resultSet.getString("email"), 
+				resultSet.getString("handy"), 
+				resultSet.getString("phone"), null);
 	}
+
+
+	private Employee setEmployeeComplete(ResultSet resultSet) throws SQLException {
+		return new Employee(
+				resultSet.getLong("id"),
+				resultSet.getString("firstname"), 
+				resultSet.getString("lastname"),
+				resultSet.getString("password"), 
+				resultSet.getString("email"), 
+				resultSet.getString("handy"), 
+				resultSet.getString("phone"), null, null, null, null, null);
+	}
+
 
 	
 }

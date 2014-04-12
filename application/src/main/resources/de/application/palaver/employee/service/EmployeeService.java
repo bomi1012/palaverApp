@@ -8,7 +8,6 @@ import de.application.palaver.employee.dao.EmployeeDAO;
 
 public class EmployeeService implements IEmployeeService{
 	private static EmployeeService m_instance = null;
-	
 	public EmployeeService() { }
 	
 	public static EmployeeService getInstance() {
@@ -36,8 +35,12 @@ public class EmployeeService implements IEmployeeService{
 		return null;
 	}
 
-	public List<Employee> getAll() {
-		// TODO Auto-generated method stub
+	public List<Employee> getAllOnlyTable() {
+		try {
+			return EmployeeDAO.getInstance().findAll(false);
+		} catch (Exception exp) {
+			exp.printStackTrace();
+		} 
 		return null;
 	}	
 }

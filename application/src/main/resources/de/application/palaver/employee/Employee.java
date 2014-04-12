@@ -1,5 +1,6 @@
 package de.application.palaver.employee;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -7,8 +8,9 @@ import de.application.palaver.menu.Menu;
 import de.application.palaver.recipe.Recipe;
 import de.helper.palaver.entities.Entity;
 
-public class Employee extends Entity implements IEmployee {
-	
+public class Employee extends Entity implements IEmployee, Serializable {
+
+	private static final long serialVersionUID = 5027557548240061499L;
 	/************************/
 	/** Getters and Setters */
 	/************************/
@@ -116,11 +118,29 @@ public class Employee extends Entity implements IEmployee {
 		m_roles = roles;
 	}
 	
-	/**temp*/
-	public Employee(long id, String firstname, String lastname, String password) {
-		super(id, null);
+	/**
+	 * @author bomi
+	 * @category Alle Daten nur aus der Tabelle. 
+	 * 
+	 * @param id employeeId LONG
+	 * @param firstname vorname STRING 
+	 * @param lastname nachmane STRING
+	 * @param nickname spitzname STRING
+	 * @param password passwort STRING
+	 * @param email email STRING
+	 * @param handy handy STRING
+	 * @param phone telefon STRING
+	 * @param createItem erstellDatum DATE 
+	 */ 
+	public Employee(long id, String firstname, String lastname,	String nickname,
+			String password, String email, String handy, String phone, Date createItem) {
+		super(id, createItem);
 		m_firstname = firstname;
 		m_lastname = lastname;
+		m_nickname = nickname;
 		m_password = password;
+		m_email = email;
+		m_handy = handy;
+		m_phone = phone;
 	}
 }
