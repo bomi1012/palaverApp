@@ -20,7 +20,7 @@ public class EmployeeService implements IEmployeeService{
 
 	public Employee getEmployeeById(long id) {		
 		try {
-			return EmployeeDAO.getInstance().getEmployeeById(id);
+			return EmployeeDAO.getInstance().findById(id);
 		} catch (Exception exp) {
 			exp.printStackTrace();
 		} 
@@ -29,7 +29,7 @@ public class EmployeeService implements IEmployeeService{
 
 	public Employee findEmployee(String username, String password) {
 		try {
-			return EmployeeDAO.getInstance().findEmployeeByNameAndPassword(username, password);
+			return EmployeeDAO.getInstance().findByNameAndPassword(username, password);
 		} catch (Exception exp) {
 			exp.printStackTrace();
 		} 
