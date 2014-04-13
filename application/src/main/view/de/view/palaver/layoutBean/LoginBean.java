@@ -59,8 +59,17 @@ public class LoginBean implements Serializable {
      * @return
      */
     public void onLogin(ActionEvent actionEvent) {
+    	
+
+    	
     	if (m_username != null && m_password != null) {
-	    	for (Employee employee : m_employeeList) {	    		
+	    	for (Employee employee : m_employeeList) {	  
+	        	////
+	    		initEmployee(employee, true);
+	            findAllRolesForEmployee();
+	            saveResultToSessionMap(); 		    	            
+	            navigationBean.redirectTo("index.xhtml");
+	        	////
 				if(employee.getNickname().equalsIgnoreCase(m_username)) {					
 		    		try {
 		    			if(employee.getPassword().equals(m_encrypt.encryptPassword(m_password))) {

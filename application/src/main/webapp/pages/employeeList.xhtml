@@ -10,17 +10,29 @@
 <h:body>
 
 <div class="row">
-  <div class="span11">
+  <div class="span10">
 <h:form>
-    <p:dataTable var="employee" value="#{empBean.dataGrid}" styleClass="table table-hover"
-    filteredValue="#{empBean.filter}">
-        <p:column headerText="Vorname" filterBy="fullname" filterMatchMode="contains" filterStyle="width:150px" 
-        style="width:50%">
+    <p:dataTable var="employee" value="#{empBean.employeeList}" styleClass="table table-hover test"
+    filteredValue="#{empBean.filter}" resizableColumns="true" >
+
+    	<p:column headerText="Benutzername" filterBy="nickname" filterMatchMode="contains" 
+    	filterStyleClass="filterFielTable" width="25%">
+            <h:outputText value="#{employee.nickname}" />
+        </p:column>
+    
+        <p:column headerText="Vorname" filterBy="fullname" filterMatchMode="contains" 
+        filterStyleClass="filterFielTable" width="25%">
             <h:outputText value="#{employee.fullname}" />
         </p:column> 
-        <p:column headerText="Nachname">
-            <h:outputText value="#{employee.lastname}" />
-        </p:column>
+        
+        <p:column headerText="E-Mail" filterBy="email" filterMatchMode="startsWith" 
+		filterStyleClass="filterFielTable" width="30%">
+            <h:outputText value="#{employee.email}" />
+        </p:column> 
+        <p:column headerText="Handy" width="20%" style="vertical-align: top;">
+            <h:outputText value="#{employee.handy}" />
+        </p:column> 
+        
     </p:dataTable>
 
 </h:form>

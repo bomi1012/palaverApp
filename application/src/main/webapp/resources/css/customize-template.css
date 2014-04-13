@@ -2254,7 +2254,7 @@ legend + .control-group {
   padding-left: 180px;
 }
 table {
-  max-width: 100%;
+  max-width: 97%;
   background-color: transparent;
   border-collapse: collapse;
   border-spacing: 0;
@@ -11466,7 +11466,24 @@ body > #body-container {
 *
 ***/
 
+th{
+	background-image: none !important;
+	background-color: white !important;
+	border-top: none !important;
+	border-bottom: #dddddd 2px solid !important;
+	border:none !important;
+}
+td {
+	border:none !important;
+}
+
 
 .width336 input{
 	width:336px;
+}
+
+.filterFielTable {
+	height: 10px; 
+	margin-bottom: 15px !important;
+	margin-top: 5px !important;
 }

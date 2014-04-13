@@ -1,42 +1,26 @@
 package de.view.palaver.employeeBean;
 
-import java.util.ArrayList;
+import java.io.Serializable;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 
 import de.application.palaver.employee.Employee;
+import de.application.palaver.employee.service.EmployeeService;
 
 @ManagedBean(name = "empBean")
-public class EmployeeBean {
+public class EmployeeBean implements Serializable{
+	private static final long serialVersionUID = 7379721634367240970L;
 
 	private List<Employee> m_employeeList;
-	public List<Employee> getFilter() { return m_employeeList; }	
-	public void setFilter(List<Employee> list) { m_employeeList = list; }
+	public List<Employee> getEmployeeList() { return m_employeeList; }
+	
+	private List<Employee> m_filterList;
+	public List<Employee> getFilter() { return m_filterList; }	
+	public void setFilter(List<Employee> list) { m_filterList = list; }
 	
 	public EmployeeBean() {
+		super();
+		m_employeeList = EmployeeService.getInstance().getAllOnlyTable();
 	}
-
-	public List<Employee> getDataGrid() {
-		
-		List<Employee> e = new ArrayList<Employee>();
-		
-//		e.add(new Employee(1, "Mischa", "Boehm", null, null, null, null));
-//		e.add(new Employee(2, "Wiolla", "DatenBank", null, null, null, null));
-//		e.add(new Employee(3, "Silas", "Hallo", null, null, null, null));
-//		e.add(new Employee(4, "Paul", "Muster", null, null, null, null));
-//		e.add(new Employee(1, "Mischa", "Boehm", null, null, null, null));
-//		e.add(new Employee(2, "Wiolla", "DatenBank", null, null, null, null));
-//		e.add(new Employee(3, "Silas", "Hallo", null, null, null, null));
-//		e.add(new Employee(4, "Paul", "Muster", null, null, null, null));
-//		e.add(new Employee(1, "Mischa", "Boehm", null, null, null, null));
-//		e.add(new Employee(2, "Wiolla", "DatenBank", null, null, null, null));
-//		e.add(new Employee(3, "Silas", "Hallo", null, null, null, null));
-//		e.add(new Employee(4, "Paul", "Muster", null, null, null, null));
-		
-		return e;
-		
-	}
-	
-
 }
