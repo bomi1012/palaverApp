@@ -11,12 +11,15 @@
 <h:body>
 
 <div class="row">
-  <div class="span10">
+  <div class="span13">
 <h:form>
     <p:dataTable var="employee" value="#{employeeBean.employeeList}" styleClass="table table-hover test"
-    filteredValue="#{employeeBean.filter}" resizableColumns="true" >
+    filteredValue="#{employeeBean.filter}" resizableColumns="true" rowKey="#{employee.id}"
+   selection="#{employeeBean.selectedEmployee}" selectionMode="single">
+   
+           <p:ajax event="rowSelect" listener="#{employeeBean.onRowSelect}"/> 
 
-    	<p:column headerText="Benutzername" filterBy="nickname" filterMatchMode="contains" 
+    	<p:column headerText="Benutzername" sortBy="nickname" filterBy="nickname" filterMatchMode="contains" 
     	filterStyleClass="filterFielTable" width="25%">
             <h:outputText value="#{employee.nickname}" />
         </p:column>

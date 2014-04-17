@@ -12,9 +12,8 @@ import de.helper.palaver.db.TablesEnum;
 import de.helper.palaver.exceptions.ConnectException;
 import de.helper.palaver.exceptions.DAOException;
 
-@SuppressWarnings("serial")
 public class EmployeeDAO extends AbstractDAO implements IEmployeeDAO {
-
+	private static final long serialVersionUID = -3440079515745827748L;
 	private static EmployeeDAO m_instance = null;
 	private Employee m_employee;
 	private List<Employee> m_employeeList;

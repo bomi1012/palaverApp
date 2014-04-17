@@ -15,7 +15,7 @@ import de.helper.palaver.exceptions.DAOException;
 
 @SuppressWarnings("restriction")
 abstract public class AbstractDAO implements IDBDictionary, Serializable{
-	
+	private static final long serialVersionUID = 7078203514396832287L;
 	private ConnectionManager m_connector;	
 	protected ResultSet m_resultSet;
 	private CachedRowSet m_cache;
