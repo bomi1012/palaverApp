@@ -18,14 +18,14 @@
 						<h:form>
 							<ul class="nav pull-right">
 								
-								<ui:fragment rendered="#{loginBean.loggedIn}">
+								<ui:fragment rendered="#{loginMan.loggedIn}">
 									<li><p:outputLabel value="Du bist als Mischa algemeldet" 
 									style="margin-top:-10px; color: darkgrey; margin-right:40px"/></li>
 								</ui:fragment>
 							
-								<ui:fragment rendered="#{loginBean.loggedIn}">
+								<ui:fragment rendered="#{loginMan.loggedIn}">
 									<li><p:commandLink id="logoutUser" style="margin-top:-20px"
-											actionListener="#{loginBean.onLogout}" ajax="false">
+											actionListener="#{loginMan.onLogout}" ajax="false">
 											<h:outputText value="#{msg['template.logout']}"/>
 										</p:commandLink></li>
 								</ui:fragment>

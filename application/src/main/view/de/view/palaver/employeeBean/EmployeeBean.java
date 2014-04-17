@@ -8,7 +8,7 @@ import javax.faces.bean.ManagedBean;
 import de.application.palaver.employee.Employee;
 import de.application.palaver.employee.service.EmployeeService;
 
-@ManagedBean(name = "empBean")
+@ManagedBean(name = "employeeBean")
 public class EmployeeBean implements Serializable{
 	private static final long serialVersionUID = 7379721634367240970L;
 

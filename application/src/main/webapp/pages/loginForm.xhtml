@@ -23,20 +23,20 @@
 								<span class="add-on" rel="tooltip" title="Username or E-Mail Address">
 								<i class="icon-user"></i></span>
 								<p:autoComplete id="logUser" styleClass="width336"
-								completeMethod="#{loginBean.completeEmployee}"
-								value="#{loginBean.username}"/>
+								completeMethod="#{loginMan.completeEmployee}"
+								value="#{loginMan.username}"/>
 								<p:watermark for="logUser" value="Benutzername..." /> 
 							</div>
 							<div class="input-prepend">
 								<span class="add-on" rel="tooltip" title="Passwort eingeben">
 								<i class="icon-key"></i></span>
-								<p:password id="paswordLogin" styleClass="span5" value="#{loginBean.password}"/>
+								<p:password id="paswordLogin" styleClass="span5" value="#{loginMan.password}"/>
 								<p:watermark for="paswordLogin" value="Passwort..." /> 
 							</div>
 						</div>
 						<footer class="signin-actions"> 
 							<h:commandButton value="Anmelden" id="submitLogin" update="MessageId"
-							type="submit" actionListener="#{loginBean.onLogin}" styleClass="btn btn-primary rigth"  />				
+							type="submit" actionListener="#{loginMan.onLogin}" styleClass="btn btn-primary rigth"  />				
 						</footer>
 					</h:form>
 				</div>

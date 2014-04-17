@@ -13,14 +13,14 @@ import javax.faces.event.ActionEvent;
 
 import de.application.palaver.employee.Employee;
 import de.application.palaver.employee.service.EmployeeService;
-import de.application.palaver.employee.service.RoleService;
+import de.application.palaver.employee.service.PermissionService;
 import de.helper.palaver.constants.IBeanDictionary;
 import de.helper.palaver.util.Encrypt;
  
  
-@ManagedBean
+@ManagedBean(name = "loginMan")
 @SessionScoped
-public class LoginBean implements Serializable {
+public class LoginManager implements Serializable {
  
     private static final long serialVersionUID = 7765876811740798583L;
  
@@ -39,15 +39,15 @@ public class LoginBean implements Serializable {
     private Encrypt m_encrypt;
     private Employee m_employee;
     
-    @ManagedProperty(value="#{navBean}")
-    private NavigationBean navigationBean;
+    @ManagedProperty(value="#{navigationMan}")
+    private NavigationManager navigationBean;
 
 
-    public void setNavigationBean(NavigationBean navigationBean) {
+    public void setNavigationBean(NavigationManager navigationBean) {
         this.navigationBean = navigationBean;
     }
      
-    public LoginBean() {
+    public LoginManager() {
     	super();    
     	m_employeeList = EmployeeService.getInstance().getAllOnlyTable();
     	m_employee = null;
@@ -59,17 +59,10 @@ public class LoginBean implements Serializable {
      * @return
      */
     public void onLogin(ActionEvent actionEvent) {
-    	
-
-    	
+    	m_username = "Kai";
+    	m_password = "palaver";
     	if (m_username != null && m_password != null) {
 	    	for (Employee employee : m_employeeList) {	  
-	        	////
-	    		initEmployee(employee, true);
-	            findAllRolesForEmployee();
-	            saveResultToSessionMap(); 		    	            
-	            navigationBean.redirectTo("index.xhtml");
-	        	////
 				if(employee.getNickname().equalsIgnoreCase(m_username)) {					
 		    		try {
 		    			if(employee.getPassword().equals(m_encrypt.encryptPassword(m_password))) {
@@ -134,7 +127,8 @@ public class LoginBean implements Serializable {
 	
     private void findAllRolesForEmployee() {
     	if (m_employee != null) {
-    		m_employee.setRole(RoleService.getInstance().findRolesByEmployeeId(m_employee.getId()));
+    		m_employee.setPermissionList(PermissionService.getInstance()
+    				.findPermissionsByEmployeeId(m_employee.getId()));
     	}
 	}
 

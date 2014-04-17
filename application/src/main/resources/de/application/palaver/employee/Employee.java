@@ -71,11 +71,11 @@ public class Employee extends Entity implements IEmployee, Serializable {
 	@Override
 	public void setMenuList(List<Menu> menus) { m_menus = menus; }
 	
-	private List<Role> m_roles; 
+	private List<Permission> m_permissions; 
 	@Override
-	public List<Role> getRoleList() { return m_roles; }
+	public List<Permission> getPermissionList() { return m_permissions; }
 	@Override
-	public void setRole(List<Role> roles) { m_roles = roles; }
+	public void setPermissionList(List<Permission> permissions) { m_permissions = permissions; }
 	
 	/*****************/
 	/** Constructors */
@@ -98,13 +98,13 @@ public class Employee extends Entity implements IEmployee, Serializable {
 	 * @param phone telefon STRING
 	 * @param recipes rezepte LIST<{@link Recipe}>
 	 * @param menus menus LIST<{@link Menu}>
-	 * @param roles rolle LIST<{@link Role}>
+	 * @param permissions rolle LIST<{@link Permission}>
 	 * @param createItem erstellDatum DATE 
 	 */
 	public Employee(
 			long id, String firstname, String lastname,	String nickname,
 			String password, String email, String handy, String phone,
-			List<Recipe> recipes, List<Menu> menus, List<Role> roles, Date createItem) {
+			List<Recipe> recipes, List<Menu> menus, List<Permission> permissions, Date createItem) {
 		super(id, createItem);
 		m_firstname = firstname;
 		m_lastname = lastname;
@@ -115,7 +115,7 @@ public class Employee extends Entity implements IEmployee, Serializable {
 		m_phone = phone;
 		m_recipes = recipes;
 		m_menus = menus;
-		m_roles = roles;
+		m_permissions = permissions;
 	}
 	
 	/**

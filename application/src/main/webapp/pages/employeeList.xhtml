@@ -5,6 +5,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:t="http://myfaces.apache.org/tomahawk"
 	xmlns:rich="http://richfaces.org/rich"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
 	xmlns:a4j="http://richfaces.org/a4j" xmlns:p="http://primefaces.org/ui">
 
 <h:body>
@@ -12,8 +13,8 @@
 <div class="row">
   <div class="span10">
 <h:form>
-    <p:dataTable var="employee" value="#{empBean.employeeList}" styleClass="table table-hover test"
-    filteredValue="#{empBean.filter}" resizableColumns="true" >
+    <p:dataTable var="employee" value="#{employeeBean.employeeList}" styleClass="table table-hover test"
+    filteredValue="#{employeeBean.filter}" resizableColumns="true" >
 
     	<p:column headerText="Benutzername" filterBy="nickname" filterMatchMode="contains" 
     	filterStyleClass="filterFielTable" width="25%">
@@ -38,7 +39,9 @@
 </h:form>
 </div>
   <div class="span2">
-	<h>INFORMATION</h>
+	<ui:fragment rendered="#{permission.checkPermissions(msg.permissionemployee)}">
+		<h1>		test	HALLO	</h1>		
+								</ui:fragment>
 </div>
 </div>
 

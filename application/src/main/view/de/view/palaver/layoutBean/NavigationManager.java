@@ -11,15 +11,15 @@ import javax.servlet.http.HttpServletRequest;
 import de.helper.palaver.constants.IBeanDictionary;
 
 @SuppressWarnings("serial")
-@ManagedBean(name = "navBean")
+@ManagedBean(name = "navigationMan")
 @SessionScoped
-public class NavigationBean implements Serializable{
+public class NavigationManager implements Serializable{
 	
 	private static final String PATH = "/pages/";
 	private FacesContext m_facesContext;
 	private HttpServletRequest m_request;
 	
-	public NavigationBean() {
+	public NavigationManager() {
 		super();
 	}
 

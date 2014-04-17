@@ -43,6 +43,6 @@ public interface IEmployee {
 	List<Menu> getMenuList();
 	void setMenuList(List<Menu> menus);
 	
-	List<Role> getRoleList();
-	void setRole(List<Role> roles);
+	List<Permission> getPermissionList();
+	void setPermissionList(List<Permission> permissions);
 }

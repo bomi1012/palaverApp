@@ -17,14 +17,14 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class LoginFilter implements Filter {
 
-	private LoginBean m_loginBean;
+	private LoginManager m_loginBean;
 	private String m_contextPath;
  
     /**
      * Checks if user is logged in. If not it redirects to the login.xhtml page.
      */
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-        m_loginBean = (LoginBean)((HttpServletRequest)request).getSession().getAttribute("loginBean");
+        m_loginBean = (LoginManager)((HttpServletRequest)request).getSession().getAttribute("loginBean");
         if (m_loginBean == null || !m_loginBean.isLoggedIn()) {
             m_contextPath = ((HttpServletRequest)request).getContextPath();
             ((HttpServletResponse)response).sendRedirect(m_contextPath + "/login.xhtml");

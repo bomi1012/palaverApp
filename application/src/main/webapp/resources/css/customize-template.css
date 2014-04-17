@@ -11468,7 +11468,7 @@ body > #body-container {
 
 th{
 	background-image: none !important;
-	background-color: white !important;
+	background-color: #f5f5f5 !important;
 	border-top: none !important;
 	border-bottom: #dddddd 2px solid !important;
 	border:none !important;
@@ -11486,4 +11486,8 @@ td {
 	height: 10px; 
 	margin-bottom: 15px !important;
 	margin-top: 5px !important;
+}
+
+thead tr{
+	border: 1px solid #dddddd;
 }
