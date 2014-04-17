@@ -12,12 +12,12 @@
 
 <div class="row">
   <div class="span13">
-<h:form>
-    <p:dataTable var="employee" value="#{employeeBean.employeeList}" styleClass="table table-hover test"
+<h:form id="form">
+    <p:dataTable id="table" var="employee" value="#{employeeBean.employeeList}" styleClass="table table-hover test"
     filteredValue="#{employeeBean.filter}" resizableColumns="true" rowKey="#{employee.id}"
    selection="#{employeeBean.selectedEmployee}" selectionMode="single">
    
-           <p:ajax event="rowSelect" listener="#{employeeBean.onRowSelect}"/> 
+           <p:ajax event="rowSelect" listener="#{employeeBean.onRowSelect}" update=":form:qw" /> 
 
     	<p:column headerText="Benutzername" sortBy="nickname" filterBy="nickname" filterMatchMode="contains" 
     	filterStyleClass="filterFielTable" width="25%">
@@ -39,11 +39,17 @@
         
     </p:dataTable>
 
+<p:inplace id="qw" editor="true">  
+                <h:outputText value="#{employeeBean.val}"  
+                            required="true" label="text"/>  
+            </p:inplace>
+
 </h:form>
 </div>
   <div class="span2">
 	<ui:fragment rendered="#{permission.checkPermissions(msg.permissionemployee)}">
-		<h1>		test	HALLO	</h1>		
+		<h1>sdfsdf	</h1>	
+					
 								</ui:fragment>
 </div>
 </div>

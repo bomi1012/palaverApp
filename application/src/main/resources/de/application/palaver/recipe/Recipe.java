@@ -3,6 +3,7 @@ package de.application.palaver.recipe;
 import java.util.Date;
 import java.util.List;
 
+import de.application.palaver.article.Article;
 import de.application.palaver.employee.Employee;
 import de.application.palaver.menu.Menu;
 import de.helper.palaver.entities.EntityName;
@@ -25,6 +26,12 @@ public class Recipe extends EntityName implements IRecipe{
 	@Override
 	public void setMenuList(List<Menu> menus) { m_menus = menus; }
 	
+	private List<Article> m_articles;
+	@Override
+	public List<Article> getArticleList() { return m_articles; }
+	@Override
+	public void setArticleList(List<Article> articles) { m_articles = articles; }
+	
 	/*****************/
 	/** Constructors */
 	/*****************/
@@ -34,10 +41,11 @@ public class Recipe extends EntityName implements IRecipe{
 	}
 	
 	public Recipe(long id, String name, Employee employee, List<Menu> menus,
-			Date createItem, Date updateItem, boolean active) {
+			List<Article> articles, Date createItem) {
 		super(id, name, createItem);
 		m_employee = employee;
 		m_menus = menus;
+		m_articles = articles;
 	}
 
 }

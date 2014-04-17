@@ -3,6 +3,7 @@ package de.view.palaver.employeeBean;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
@@ -12,7 +13,7 @@ import de.application.palaver.employee.Employee;
 import de.application.palaver.employee.service.EmployeeService;
 
 @ManagedBean(name = "employeeBean")
-@ViewScoped
+@ApplicationScoped
 public class EmployeeBean implements Serializable{
 	private static final long serialVersionUID = 7379721634367240970L;
 
@@ -27,8 +28,19 @@ public class EmployeeBean implements Serializable{
 	public Employee getSelectedEmployee() {  return m_selectedEmployee; }
 	public void setSelectedEmployee(Employee selectedEmployee) {  m_selectedEmployee = selectedEmployee; }
 	
+	private String m_val;
+	public String getVal() {
+		return m_val;
+	}
+	public void setVal(String val) {
+		m_val = val;
+	}
+
+	
+	
 	public void onRowSelect(SelectEvent event) {  
-		//System.out.println(" 1 " + ((Employee) event.getObject()).getFirstname());
+		System.out.println(" 1 " + ((Employee) event.getObject()).getFirstname());
+		m_val = ((Employee) event.getObject()).getFirstname();
     }  
 	
 	public EmployeeBean() {

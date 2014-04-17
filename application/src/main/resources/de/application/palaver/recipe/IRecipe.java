@@ -2,6 +2,7 @@ package de.application.palaver.recipe;
 
 import java.util.List;
 
+import de.application.palaver.article.Article;
 import de.application.palaver.employee.Employee;
 import de.application.palaver.menu.Menu;
 
@@ -17,4 +18,7 @@ public interface IRecipe {
 	
 	List<Menu> getMenuList();
 	void setMenuList(List<Menu> menus);
+	
+	List<Article> getArticleList();
+	void setArticleList(List<Article> articles);
 }
