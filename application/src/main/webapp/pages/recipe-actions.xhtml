@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:t="http://myfaces.apache.org/tomahawk"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:a4j="http://richfaces.org/a4j" xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+
+<div class="row">
+  <div class="span16">
+  <h:form> 
+  <h:link value="Create " outcome="recipe" >
+	<f:param name="page" value="create" />
+</h:link>
+
+  <h:link value="List " outcome="recipe" >
+	<f:param name="page" value="list" />
+</h:link>
+  </h:form>
+  
+  </div>
+</div>
+
+	
+</h:body>
+</html>

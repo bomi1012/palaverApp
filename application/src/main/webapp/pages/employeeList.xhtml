@@ -11,47 +11,89 @@
 <h:body>
 
 <div class="row">
-  <div class="span13">
+  <div class="span11">
 <h:form id="form">
     <p:dataTable id="table" var="employee" value="#{employeeBean.employeeList}" styleClass="table table-hover test"
     filteredValue="#{employeeBean.filter}" resizableColumns="true" rowKey="#{employee.id}"
    selection="#{employeeBean.selectedEmployee}" selectionMode="single">
    
-           <p:ajax event="rowSelect" listener="#{employeeBean.onRowSelect}" update=":form:qw" /> 
-
+           <p:ajax event="rowSelect" listener="#{employeeBean.onRowSelect}"  
+           	update=":padding"/> 
+<!-- update=":edit:nickname" -->
     	<p:column headerText="Benutzername" sortBy="nickname" filterBy="nickname" filterMatchMode="contains" 
-    	filterStyleClass="filterFielTable" width="25%">
+    	filterStyleClass="filterFielTable" width="20%">
             <h:outputText value="#{employee.nickname}" />
         </p:column>
     
-        <p:column headerText="Vorname" filterBy="fullname" filterMatchMode="contains" 
-        filterStyleClass="filterFielTable" width="25%">
+        <p:column headerText="Voller Name" filterBy="fullname" filterMatchMode="contains" 
+        filterStyleClass="filterFielTable" width="35%">
             <h:outputText value="#{employee.fullname}" />
         </p:column> 
         
         <p:column headerText="E-Mail" filterBy="email" filterMatchMode="startsWith" 
-		filterStyleClass="filterFielTable" width="30%">
+		filterStyleClass="filterFielTable" width="45%">
             <h:outputText value="#{employee.email}" />
-        </p:column> 
-        <p:column headerText="Handy" width="20%" style="vertical-align: top;">
-            <h:outputText value="#{employee.handy}" />
-        </p:column> 
-        
+        </p:column>         
     </p:dataTable>
 
-<p:inplace id="qw" editor="true">  
-                <h:outputText value="#{employeeBean.val}"  
-                            required="true" label="text"/>  
-            </p:inplace>
+
 
 </h:form>
 </div>
-  <div class="span2">
-	<ui:fragment rendered="#{permission.checkPermissions(msg.permissionemployee)}">
-		<h1>sdfsdf	</h1>	
-					
-								</ui:fragment>
+  <ui:fragment id="test">
+  <h:panelGroup id="padding" layout="block">
+  <h:form rendered="#{employeeBean.visibleInfoBlock}">
+  <div class="span5" >
+ 	<div class="box">
+		<div class="box-header">
+		     <i class="fa fa-tag fa-2x"></i>
+		     <h5>Information</h5>
+		 </div>
+		 <div class="box-content">
+		 <h:panelGrid columns="2"> 
+
+		    <h:outputLabel value="Benutzername:" styleClass="information-block" />
+		    <h:outputLabel value="#{employeeBean.selectedEmployee.nickname}" />
+		    
+		    <h:outputLabel value="Vorname:" styleClass="information-block" />
+		    <h:outputLabel value="#{employeeBean.selectedEmployee.firstname}" />
+		    
+		    <h:outputLabel value="Nachname:" styleClass="information-block" />
+		    <h:outputLabel value="#{employeeBean.selectedEmployee.lastname}" />
+		    
+		    <h:outputLabel value="E-Mail:" styleClass="information-block" />
+		    <h:outputLabel value="#{employeeBean.selectedEmployee.email}" />
+		    
+		    <h:outputLabel value="Telefonnummer:" styleClass="information-block" />
+		    <h:outputLabel value="#{employeeBean.selectedEmployee.phone}" />
+		    
+		    <h:outputLabel value="Handynummer:" styleClass="information-block" />
+		    <h:outputLabel value="#{employeeBean.selectedEmployee.handy}" />
+		    
+		    <h:outputLabel value="Erstellte Rezepte:" styleClass="information-block" />
+		    <h:outputLabel value="10 (view)" />
+		    
+		    <h:outputLabel value="Erstellte Menü:" styleClass="information-block" />
+		    <h:outputLabel value="23 (view)" />
+		    </h:panelGrid>
+		 </div>	
+	</div>
+
+  
+ <!-- 
+ rendered="#{permission.checkPermissions(msg.permissionemployee)}"
+ <h:form id="edit" rendered="false">	
+  	<h:outputText value="Benutzername" /> <br/> 
+    <p:inplace id="nickname" editor="true" >  
+        <p:inputText value="#{employeeBean.selectedEmployee.nickname}"  
+        		required="true" label="text" />  
+    </p:inplace>
+  </h:form>  --> 
+
 </div>
+</h:form>
+</h:panelGroup>
+</ui:fragment>
 </div>
 
 	

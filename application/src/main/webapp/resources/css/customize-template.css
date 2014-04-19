@@ -11491,3 +11491,9 @@ td {
 thead tr{
 	border: 1px solid #dddddd;
 }
+
+.information-block {
+	font-weight: bold;
+	width: 140px;
+	margin-left: 5px;
+}

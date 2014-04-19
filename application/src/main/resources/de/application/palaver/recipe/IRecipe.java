@@ -13,6 +13,12 @@ public interface IRecipe {
 	String getName();
 	void setName(String name);
 	
+	Preparation getPreparation();
+	void setPreparation(Preparation preparation);
+	
+	RecipeType getRecipeType();
+	void setRecipeType(RecipeType recipeType);
+	
 	Employee getEmployee();
 	void setEmployee(Employee employee);
 	

@@ -27,26 +27,28 @@ public class EmployeeBean implements Serializable{
 	private Employee m_selectedEmployee;
 	public Employee getSelectedEmployee() {  return m_selectedEmployee; }
 	public void setSelectedEmployee(Employee selectedEmployee) {  m_selectedEmployee = selectedEmployee; }
-	
-	private String m_val;
-	public String getVal() {
-		return m_val;
-	}
-	public void setVal(String val) {
-		m_val = val;
-	}
 
-	
-	
 	public void onRowSelect(SelectEvent event) {  
+		setVisibleInfoBlock(true);
 		System.out.println(" 1 " + ((Employee) event.getObject()).getFirstname());
-		m_val = ((Employee) event.getObject()).getFirstname();
+		
     }  
+	
+	private boolean m_visibleInfoBlock;
+	public boolean isVisibleInfoBlock() {
+		return m_visibleInfoBlock;
+	}
+	public void setVisibleInfoBlock(boolean visibleInfoBlock) {
+		m_visibleInfoBlock = visibleInfoBlock;
+	}
+	
 	
 	public EmployeeBean() {
 		super();
 		m_employeeList = EmployeeService.getInstance().getAllOnlyTable();
+		m_visibleInfoBlock = false;
 	}
+
 
 	
 }
