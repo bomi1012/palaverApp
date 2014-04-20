@@ -9,25 +9,18 @@
 	xmlns:a4j="http://richfaces.org/a4j" xmlns:p="http://primefaces.org/ui">
 
 <h:body>
+	<div class="row">
+		<div class="span16">
+			<h:form>
+				<h:link value="create" outcome="recipe-create" />  
 
-<div class="row">
-  <div class="span16">
-  <h:form> 
-  <h:link value="Create " outcome="recipe" >
-	<f:param name="page" value="create" />
-</h:link>
+				<h:link value="List " outcome="recipe">
+					<f:param name="page" value="list" />
+				</h:link>
+			</h:form>
+		</div>
+	</div>
 
-  <h:link value="List " outcome="recipe" >
-	<f:param name="page" value="list" />
-</h:link>
 
-  <p:commandButton action="#{recipeBean.testButtonAction}"/>
-    <p:commandButton actionListener="#{recipeBean.testButtonActionListener}"/>
-  </h:form>
-  
-  </div>
-</div>
-
-	
 </h:body>
 </html>

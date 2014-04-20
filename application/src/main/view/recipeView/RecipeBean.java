@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.event.ActionEvent;
 
 import org.primefaces.model.DualListModel;
@@ -14,7 +14,7 @@ import de.application.palaver.recipe.Preparation;
 import de.application.palaver.recipe.service.RecipeService;
 
 @ManagedBean
-@ViewScoped
+@SessionScoped
 public class RecipeBean implements Serializable {
 	private static final long serialVersionUID = -2786447515450216664L;
 

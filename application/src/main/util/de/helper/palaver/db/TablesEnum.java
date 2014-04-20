@@ -4,7 +4,7 @@ public enum TablesEnum {
 	EMPLOYEE("mitarbeiter"), 
 	PERMISSION("rollen"), 
 	EMPLOYEE_PERMISSION("mitarbeiter_has_rollen"), 
-	PREPARATION("preparation"),
+	PREPARATION("rollen"),
 	RECIPE("test");
 	
 	private String m_table;

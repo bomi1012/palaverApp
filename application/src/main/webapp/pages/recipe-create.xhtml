@@ -10,76 +10,71 @@
 
 <h:body>
 
-	
-		<h:form id="hallo">
-	<!-- 		<div class="span16">
-				<ui:fragment id="test">
-					<h:panelGroup id="padding" layout="block">
+	<h:form id="hallo">
 
-						<div class="span7">
-							<div class="box">
-								<div class="box-header">
-									<i class="fa fa-pencil fa-2x"></i>
-									<h5>Information</h5>
-								</div>
-								<div class="box-content">
-									<h:panelGrid columns="2">
+		<div class="span16">
+			<div class="span7">
+				<div class="box">
+					<div class="box-header">
+						<i class="fa fa-pencil fa-2x"></i>
+						<h5>Information</h5>
+					</div>
+					<div class="box-content">				
+							<h:panelGrid columns="2" cellpadding="5">
+								<h:outputLabel value="Bezeichnung* :"
+									styleClass="information-block" />
+								<h:inputText title="recipe" style="width:207px" />
 
-										<h:outputLabel value="Bezeichnung* :"
-											styleClass="information-block" />
-										<h:inputText required="true" title="recipe name"
-											style="width:207px" />
+								<h:outputLabel value="Rezeptart:" styleClass="information-block" />
+								<h:selectOneMenu id="city" value="City" required="true">
+									<f:selectItem itemLabel="Istanbul" itemValue="Istanbul" />
+									<f:selectItem itemLabel="Ankara" itemValue="Ankara" />
+								</h:selectOneMenu>
 
-										<h:outputLabel value="Rezeptart:"
-											styleClass="information-block" />
-										<h:selectOneMenu id="city" value="City" required="true">
-											<f:selectItem itemLabel="Istanbul" itemValue="Istanbul" />
-											<f:selectItem itemLabel="Ankara" itemValue="Ankara" />
-										</h:selectOneMenu>
-
-										<h:outputLabel value="Koch:" styleClass="information-block" />
-										<p:inplace id="selectableInplace" label="Cities"
-											effectSpeed="fast" event="dblclick" styleClass="span4">
-											<h:selectOneMenu>
-												<f:selectItem itemLabel="Istanbul" itemValue="Istanbul" />
-												<f:selectItem itemLabel="Ankara" itemValue="Ankara" />
-												<f:selectItem itemLabel="Istanbul" itemValue="Istanbul" />
-											</h:selectOneMenu>
-										</p:inplace>
-
-
-									</h:panelGrid>
-								</div>
-							</div>
-						</div>
-
-						<div class="span8">
-							<div class="box">
-								<div class="box-header">
-									<i class="fa fa-retweet fa-2x"></i>
-									<h5>Zubereitung</h5>
-								</div>
-								<div class="box-content">
-									<p:pickList id="pickList" value="#{recipeBean.preparationList}"
-										var="preparation" itemLabel="#{preparation.name}" 
-										itemValue="#{preparation.name}" />
-								</div>
-							</div>
-						</div>
-
-
-		
-	
-
-					</h:panelGroup>
-				</ui:fragment>
-			</div>  -->
-
-  <p:commandButton type = "submit" action="#{recipeBean.testButtonActionListener}"></p:commandButton>
-
-		</h:form>
+								<h:outputLabel value="Koch:" styleClass="information-block" />
+								<p:inplace id="selectableInplace" label="Cities"
+									effectSpeed="fast" event="dblclick" styleClass="span4">
+									<h:selectOneMenu>
+										<f:selectItem itemLabel="Istanbul" itemValue="Istanbul" />
+										<f:selectItem itemLabel="Ankara" itemValue="Ankara" />
+										<f:selectItem itemLabel="Istanbul" itemValue="Istanbul" />
+									</h:selectOneMenu>
+								</p:inplace>
+								<h:outputLabel value="Kommentar:" styleClass="information-block" />
+								<p:inputTextarea rows="5" cols="40" counter="counter" maxlength="255"       
+    										counterTemplate="{0} characters remaining."/>  
+								
+								<h:outputText/> 
+								<h:outputText id="counter" />  
+							</h:panelGrid>
+					
+					</div>
+				</div>
+			</div>
 
 
 
+			<div class="span8">
+
+				<div class="box">
+					<div class="box-header">
+						<i class="fa fa-retweet fa-2x"></i>
+						<h5>Zubereitung</h5>
+					</div>
+					<div class="box-content">
+
+						<p:pickList id="pickList" value="#{recipeBean.preparationList}"
+							var="preparation" itemLabel="#{preparation.name}"
+							itemValue="#{preparation.name}" />
+
+					</div>
+				</div>
+
+			</div>
+			<p:commandButton type="submit"
+				actionListener="#{recipeBean.testButtonActionListener}"></p:commandButton>
+		</div>
+	</h:form>
 </h:body>
+
 </html>

@@ -11497,3 +11497,9 @@ thead tr{
 	width: 140px;
 	margin-left: 5px;
 }
+
+.ui-picklist 
+.ui-picklist-list { 
+   width: 250px !important;
+   height: 190px;
+}

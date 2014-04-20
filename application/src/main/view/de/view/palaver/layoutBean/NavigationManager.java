@@ -6,7 +6,6 @@ import java.util.Map;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 
@@ -38,16 +37,9 @@ public class NavigationManager implements Serializable{
 			} else if (uri.contains("/login.xhtml")) {
 				page =  PATH + "dashboard.xhtml";
 			} else if (uri.contains("/recipe.xhtml")){
-				m_params = m_facesContext.getExternalContext().getRequestParameterMap();
-				if(m_params.get("page") != null) {
-					if(m_params.get("page").equals("create")) {
-						page = PATH + "recipe-create.xhtml";
-					} else if (m_params.get("page").equals("list")) {
-						page = PATH + "recipe-list.xhtml";
-					}
-				} else {			
-					page = PATH + "recipe-actions.xhtml";
-				}
+				page = PATH + "recipe-actions.xhtml";
+			} else if (uri.contains("/recipe-create.xhtml")){
+				page = PATH + "recipe-create.xhtml";
 			}
 			return page;
 		} else {
