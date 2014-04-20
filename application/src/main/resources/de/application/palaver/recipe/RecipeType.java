@@ -9,6 +9,6 @@ public class RecipeType extends EntityName {
 	}
 
 	public RecipeType(long id, String name) {
-		super(id, name, null);
+		super(id, name);
 	}
 }

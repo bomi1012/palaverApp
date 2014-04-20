@@ -1,6 +1,5 @@
 package de.helper.palaver.entities;
 
-import java.util.Date;
 
 abstract public class Entity {
 	
@@ -8,18 +7,13 @@ abstract public class Entity {
 	public long getId() { return m_id; }
 	public void setId(long id) { m_id = id; }
 	
-	protected Date m_createDate;
-	public Date getCreateDate() { return m_createDate; }
-	public void setCreateDate(Date createDate) { m_createDate = createDate; }
-	
 	public Entity() {
 		super();
 	}
 	
-	public Entity(long id, Date createDate) {
+	public Entity(long id) {
 		super();
 		m_id = id;
-		m_createDate = createDate;
 	}
 	
 	

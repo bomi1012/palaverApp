@@ -4,13 +4,9 @@ import java.util.List;
 
 import de.application.palaver.menu.Menu;
 import de.application.palaver.recipe.Recipe;
+import de.helper.palaver.entities.IEntity;
 
-public interface IEmployee {
-	
-	long getId();
-	void setId(long id);
-	
-	/////////////////////////////////////
+public interface IEmployee extends IEntity {
 	
 	String getFirstname();
 	void setFirstname(String firstname);
@@ -27,12 +23,6 @@ public interface IEmployee {
 	String getEmail();
 	void setEmail(String email);
 	
-	String getHandy();
-	void setHandy(String handy);
-	
-	String getPhone();
-	void setPhone(String phone);
-	
 	///
 	/// Relations
 	///
@@ -45,4 +35,6 @@ public interface IEmployee {
 	
 	List<Permission> getPermissionList();
 	void setPermissionList(List<Permission> permissions);
+	
+
 }

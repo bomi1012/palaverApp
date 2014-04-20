@@ -1,7 +1,6 @@
 package de.application.palaver.employee;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 
 import de.application.palaver.menu.Menu;
@@ -27,6 +26,7 @@ public class Employee extends Entity implements IEmployee, Serializable {
 	@Override
 	public void setLastname(String lastname) { m_lastname = lastname; }
 	
+	//Fullname
 	public String getFullname() { return m_firstname + " " + m_lastname; }
 	
 	private String m_nickname;
@@ -46,19 +46,7 @@ public class Employee extends Entity implements IEmployee, Serializable {
 	public String getEmail() { return m_email; }
 	@Override
 	public void setEmail(String email) { m_email = email; }
-	
-	private String m_handy;
-	@Override
-	public String getHandy() { return m_handy; }
-	@Override
-	public void setHandy(String handy) { m_handy = handy; }
-	
-	private String m_phone;
-	@Override
-	public String getPhone() { return m_phone; }
-	@Override
-	public void setPhone(String phone) { m_phone = phone; }
-	
+
 	private List<Recipe> m_recipes;
 	@Override
 	public List<Recipe> getRecipeList() { return m_recipes; 	}
@@ -94,8 +82,6 @@ public class Employee extends Entity implements IEmployee, Serializable {
 	 * @param nickname spitzname STRING
 	 * @param password passwort STRING
 	 * @param email email STRING
-	 * @param handy handy STRING
-	 * @param phone telefon STRING
 	 * @param recipes rezepte LIST<{@link Recipe}>
 	 * @param menus menus LIST<{@link Menu}>
 	 * @param permissions rolle LIST<{@link Permission}>
@@ -103,16 +89,14 @@ public class Employee extends Entity implements IEmployee, Serializable {
 	 */
 	public Employee(
 			long id, String firstname, String lastname,	String nickname,
-			String password, String email, String handy, String phone,
-			List<Recipe> recipes, List<Menu> menus, List<Permission> permissions, Date createItem) {
-		super(id, createItem);
+			String password, String email, List<Recipe> recipes, 
+			List<Menu> menus, List<Permission> permissions) {
+		super(id);
 		m_firstname = firstname;
 		m_lastname = lastname;
 		m_nickname = nickname;
 		m_password = password;
 		m_email = email;
-		m_handy = handy;
-		m_phone = phone;
 		m_recipes = recipes;
 		m_menus = menus;
 		m_permissions = permissions;
@@ -127,20 +111,16 @@ public class Employee extends Entity implements IEmployee, Serializable {
 	 * @param lastname nachmane STRING
 	 * @param nickname spitzname STRING
 	 * @param password passwort STRING
-	 * @param email email STRING
-	 * @param handy handy STRING
 	 * @param phone telefon STRING
 	 * @param createItem erstellDatum DATE 
 	 */ 
 	public Employee(long id, String firstname, String lastname,	String nickname,
-			String password, String email, String handy, String phone, Date createItem) {
-		super(id, createItem);
+			String password, String email) {
+		super(id);
 		m_firstname = firstname;
 		m_lastname = lastname;
 		m_nickname = nickname;
 		m_password = password;
 		m_email = email;
-		m_handy = handy;
-		m_phone = phone;
 	}
 }

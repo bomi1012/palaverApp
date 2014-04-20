@@ -9,6 +9,12 @@ import de.helper.palaver.exceptions.ConnectException;
 import de.helper.palaver.exceptions.DAOException;
 
 public interface IPermissionDAO extends ICUD {
+	
+	String FIELD_ID = "id";
+	String FIELD_NAME = "name";
+	String FIELD_EMPLOYEE_FK = "mitarbeiter_fk";
+	String FIELD_PERMISSION_FK = "rollen_fk";
+	
 	List<Permission> findAll() throws ConnectException, DAOException, SQLException;
 	Permission findById(long id) throws ConnectException, DAOException, SQLException;
 	List<Permission> findPermissionsByEmployeeId(long id) throws ConnectException, DAOException, SQLException;;

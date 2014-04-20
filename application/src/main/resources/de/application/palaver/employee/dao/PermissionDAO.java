@@ -18,11 +18,13 @@ public class PermissionDAO extends AbstractDAO implements IPermissionDAO {
 	
 	private static final String GET_PERMISSIONS_BY_EMPLOYEE = "SELECT * FROM "
 			+ TablesEnum.PERMISSION.getName() + " p JOIN " 
-			+ TablesEnum.EMPLOYEE_PERMISSION.getName() + " ep ON p.id = ep.permission_fk JOIN " 
-			+ TablesEnum.EMPLOYEE.getName() + " e ON e.id = ep.employee_fk WHERE " 
-			+ " e.id = {0}";
-	private List<Permission> m_permissionList;
+			+ TablesEnum.EMPLOYEE_PERMISSION.getName() + " ep " 
+			+ "ON p." + FIELD_ID + " = ep." + FIELD_PERMISSION_FK + " JOIN " 
+			+ TablesEnum.EMPLOYEE.getName() + " e " 
+			+ "ON e." + FIELD_ID + " = ep." + FIELD_EMPLOYEE_FK + " WHERE " 
+			+ " e." + FIELD_ID + " = {0}";
 	
+	private List<Permission> m_permissionList;
 	
 	public PermissionDAO() {
 		super();
@@ -83,7 +85,7 @@ public class PermissionDAO extends AbstractDAO implements IPermissionDAO {
 //////PRIVATE METHODE ////////	
 	private Permission setPermission(ResultSet resultSet) throws SQLException {
 		return new Permission(
-				resultSet.getLong("id"),
-				resultSet.getString("name"), null);
+				resultSet.getLong(FIELD_ID),
+				resultSet.getString(FIELD_NAME));
 	}
 }

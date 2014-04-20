@@ -5,13 +5,9 @@ import java.util.List;
 import de.application.palaver.article.Article;
 import de.application.palaver.employee.Employee;
 import de.application.palaver.menu.Menu;
+import de.helper.palaver.entities.IEntityName;
 
-public interface IRecipe {
-	long getId();
-	void setId(long id);
-	
-	String getName();
-	void setName(String name);
+public interface IRecipe extends IEntityName{
 	
 	Preparation getPreparation();
 	void setPreparation(Preparation preparation);

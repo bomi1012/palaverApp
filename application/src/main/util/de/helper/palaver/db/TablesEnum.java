@@ -1,9 +1,10 @@
 package de.helper.palaver.db;
 
 public enum TablesEnum {
-	EMPLOYEE("employee"), 
-	PERMISSION("permission"), 
-	EMPLOYEE_PERMISSION("employee_has_permission"), 
+	EMPLOYEE("mitarbeiter"), 
+	PERMISSION("rollen"), 
+	EMPLOYEE_PERMISSION("mitarbeiter_has_rollen"), 
+	PREPARATION("preparation"),
 	RECIPE("test");
 	
 	private String m_table;

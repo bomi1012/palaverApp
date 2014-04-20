@@ -21,9 +21,9 @@ public class EmployeeDAO extends AbstractDAO implements IEmployeeDAO {
 	private static final String GET_ALL_EMPLOYEES = "SELECT * FROM "
 			+ TablesEnum.EMPLOYEE.getName();
 	private static final String GET_EMPLOYEE_BY_ID = "SELECT * FROM "
-			+ TablesEnum.EMPLOYEE.getName() + " WHERE id = {0}";
+			+ TablesEnum.EMPLOYEE.getName() + " WHERE " + FIELD_ID + " = {0}";
 	private static final String 	GET_EMPLOYEE_BY_NAME_AND_PASSWORD = "SELECT * FROM "
-			+ TablesEnum.EMPLOYEE.getName() + " WHERE benutzername = \"{0}\" ORDER BY id";
+			+ TablesEnum.EMPLOYEE.getName() + " WHERE " + FIELD_NICKNAME + " = \"{0}\" ORDER BY " + FIELD_ID;
 
 	public EmployeeDAO() {
 		super();
@@ -93,26 +93,23 @@ public class EmployeeDAO extends AbstractDAO implements IEmployeeDAO {
 	////// PRIVATE METHODE ////////	
 	private Employee setEmployee(ResultSet resultSet) throws SQLException {
 		return new Employee(
-				resultSet.getLong("id"),
-				resultSet.getString("firstname"), 
-				resultSet.getString("lastname"),
-				resultSet.getString("nickname"),
-				resultSet.getString("password"), 
-				resultSet.getString("email"), 
-				resultSet.getString("handy"), 
-				resultSet.getString("phone"), null);
+				resultSet.getLong(FIELD_ID),
+				resultSet.getString(FIELD_FIRSTNAME), 
+				resultSet.getString(FIELD_LASTNAME),
+				resultSet.getString(FIELD_NICKNAME),
+				resultSet.getString(FIELD_PASSWORD), 
+				resultSet.getString(FIELD_EMAIL));
 	}
 
 
 	private Employee setEmployeeComplete(ResultSet resultSet) throws SQLException {
 		return new Employee(
-				resultSet.getLong("id"),
-				resultSet.getString("firstname"), 
-				resultSet.getString("lastname"),
-				resultSet.getString("password"), 
-				resultSet.getString("email"), 
-				resultSet.getString("handy"), 
-				resultSet.getString("phone"), null, null, null, null, null);
+				resultSet.getLong(FIELD_ID),
+				resultSet.getString(FIELD_FIRSTNAME), 
+				resultSet.getString(FIELD_LASTNAME),
+				resultSet.getString(FIELD_NICKNAME),
+				resultSet.getString(FIELD_PASSWORD), 
+				resultSet.getString(FIELD_EMAIL), null, null, null);
 	}
 
 

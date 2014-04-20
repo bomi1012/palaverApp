@@ -4,14 +4,10 @@ import java.util.List;
 
 import de.application.palaver.employee.Employee;
 import de.application.palaver.recipe.Recipe;
+import de.helper.palaver.entities.IEntityName;
 
-public interface IMenu {
-	long getId();
-	void setId(long id);
-	
-	String getName();
-	void setName(String name);
-	
+public interface IMenu extends IEntityName {
+
 	Employee getEmployee();
 	void setEmployee(Employee employee);
 	

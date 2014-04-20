@@ -20,6 +20,9 @@
   <h:link value="List " outcome="recipe" >
 	<f:param name="page" value="list" />
 </h:link>
+
+  <p:commandButton action="#{recipeBean.testButtonAction}"/>
+    <p:commandButton actionListener="#{recipeBean.testButtonActionListener}"/>
   </h:form>
   
   </div>

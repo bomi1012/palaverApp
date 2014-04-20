@@ -9,6 +9,6 @@ public class Preparation extends EntityName {
 	}
 
 	public Preparation(long id, String name) {
-		super(id, name, null);
+		super(id, name);
 	}
 }

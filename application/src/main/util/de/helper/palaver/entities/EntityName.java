@@ -1,6 +1,5 @@
 package de.helper.palaver.entities;
 
-import java.util.Date;
 
 
 abstract public class EntityName extends Entity{
@@ -13,8 +12,8 @@ abstract public class EntityName extends Entity{
 		super();
 	}
 
-	public EntityName(long id, String name, Date createItem) {
-		super(id, createItem);
+	public EntityName(long id, String name) {
+		super(id);
 		m_name = name;
 	}
 }

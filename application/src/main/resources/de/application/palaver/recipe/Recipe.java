@@ -1,6 +1,5 @@
 package de.application.palaver.recipe;
 
-import java.util.Date;
 import java.util.List;
 
 import de.application.palaver.article.Article;
@@ -53,9 +52,8 @@ public class Recipe extends EntityName implements IRecipe{
 	}
 	
 	public Recipe(long id, String name, Employee employee, List<Menu> menus,
-			List<Article> articles, Preparation preparation, RecipeType recipeType,
-			Date createItem) {
-		super(id, name, createItem);
+			List<Article> articles, Preparation preparation, RecipeType recipeType) {
+		super(id, name);
 		m_employee = employee;
 		m_menus = menus;
 		m_articles = articles;
