@@ -10,70 +10,48 @@
 
 <h:body>
 
-	<h:form id="hallo">
-
-		<div class="span16">
-			<div class="span7">
-				<div class="box">
-					<div class="box-header">
-						<i class="fa fa-pencil fa-2x"></i>
-						<h5>Information</h5>
-					</div>
-					<div class="box-content">				
-							<h:panelGrid columns="2" cellpadding="5">
-								<h:outputLabel value="Bezeichnung* :"
-									styleClass="information-block" />
-								<h:inputText title="recipe" style="width:207px" />
-
-								<h:outputLabel value="Rezeptart:" styleClass="information-block" />
-								<h:selectOneMenu id="city" value="City" required="true">
-									<f:selectItem itemLabel="Istanbul" itemValue="Istanbul" />
-									<f:selectItem itemLabel="Ankara" itemValue="Ankara" />
-								</h:selectOneMenu>
-
-								<h:outputLabel value="Koch:" styleClass="information-block" />
-								<p:inplace id="selectableInplace" label="Cities"
-									effectSpeed="fast" event="dblclick" styleClass="span4">
-									<h:selectOneMenu>
-										<f:selectItem itemLabel="Istanbul" itemValue="Istanbul" />
-										<f:selectItem itemLabel="Ankara" itemValue="Ankara" />
-										<f:selectItem itemLabel="Istanbul" itemValue="Istanbul" />
-									</h:selectOneMenu>
-								</p:inplace>
-								<h:outputLabel value="Kommentar:" styleClass="information-block" />
-								<p:inputTextarea rows="5" cols="40" counter="counter" maxlength="255"       
-    										counterTemplate="{0} characters remaining."/>  
-								
-								<h:outputText/> 
-								<h:outputText id="counter" />  
-							</h:panelGrid>
-					
-					</div>
-				</div>
+	<h:form id="hallo">	
+	<div class="span16" >
+			<div class="span10" id="selected">
+					<p:outputPanel id="dropArea">
+						<p:dataTable id="table_dropped" var="recipe"
+							value="#{recipeBean.recipeItem}"
+							styleClass="table table-hover test"  
+							>
+		
+							<p:column headerText="Artikel">
+								<h:outputText value="#{recipe.name}" />
+							</p:column>
+						</p:dataTable>
+					</p:outputPanel>
 			</div>
-
-
-
-			<div class="span8">
-
-				<div class="box">
-					<div class="box-header">
-						<i class="fa fa-retweet fa-2x"></i>
-						<h5>Zubereitung</h5>
-					</div>
-					<div class="box-content">
-
-						<p:pickList id="pickList" value="#{recipeBean.preparationList}"
-							var="preparation" itemLabel="#{preparation.name}"
-							itemValue="#{preparation.name}" />
-
-					</div>
-				</div>
-
+			<!-- Table 2 -->
+			<div class="span5" id="produkts">
+				<p:dataTable id="availableCars" var="article"
+					value="#{recipeBean.availableArticles}"
+					styleClass="table table-hover" scrollable="true" scrollHeight="400">
+					<p:column style="width:10px">
+						<h:outputText id="dragIcon" styleClass="ui-icon ui-icon-arrow-4" />
+						<p:draggable for="dragIcon" revert="true" />  
+					</p:column>
+					<p:column headerText="Nummer" width="30%">
+						<h:outputText value="#{article.number}" />
+					</p:column>
+					<p:column headerText="Name" width="70%">
+						<h:outputText value="#{article.name}" />
+					</p:column>
+				</p:dataTable>
 			</div>
-			<p:commandButton type="submit"
-				actionListener="#{recipeBean.testButtonActionListener}"></p:commandButton>
+			 		<p:droppable for="dropArea" 
+ 			datasource="availableCars" activeStyleClass="ui-state-highlight" tolerance="touch" >  
+        	<p:ajax listener="#{recipeBean.onDrop}" update="availableCars table_dropped" onDrop="handleDrop"/>  
+    	</p:droppable> 
 		</div>
+
+
+
+		<p:commandButton type="submit"
+			actionListener="#{recipeBean.testButtonActionListener}"></p:commandButton>
 	</h:form>
 </h:body>
 

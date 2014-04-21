@@ -43,6 +43,14 @@ public class Recipe extends EntityName implements IRecipe{
 	@Override
 	public void setRecipeType(RecipeType recipeType) { m_recipeType = recipeType; }
 	
+	private List<RecipeArticleRelation> m_recipeArticleRelationList;
+	@Override
+	public List<RecipeArticleRelation> getRecipeArticleRelationList() { return m_recipeArticleRelationList; }
+	@Override
+	public void setRecipeArticleRelationList(List<RecipeArticleRelation> recipeArticleRelations) { 
+		m_recipeArticleRelationList = recipeArticleRelations; 
+	}
+	
 	/*****************/
 	/** Constructors */
 	/*****************/
@@ -60,4 +68,5 @@ public class Recipe extends EntityName implements IRecipe{
 		m_preparation = preparation;
 		m_recipeType = recipeType;
 	}
+
 }

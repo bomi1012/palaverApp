@@ -3,6 +3,7 @@ package de.helper.palaver.db;
 public enum TablesEnum {
 	EMPLOYEE("mitarbeiter"), 
 	PERMISSION("rollen"), 
+	ARTICLE("artikel"),
 	EMPLOYEE_PERMISSION("mitarbeiter_has_rollen"), 
 	PREPARATION("rollen"),
 	RECIPE("test");

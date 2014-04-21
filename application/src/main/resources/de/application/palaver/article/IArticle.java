@@ -1,9 +1,15 @@
 package de.application.palaver.article;
 
-public interface IArticle {
-	long getId();
-	void setId(long id);
+import java.util.List;
+
+import de.application.palaver.recipe.RecipeArticleRelation;
+import de.helper.palaver.entities.IEntityName;
+
+public interface IArticle extends IEntityName {
+
+	String getNumber();
+	void setNumber(String number);
 	
-	String getName();
-	void setName(String name);
+	List<RecipeArticleRelation> getRecipeArticleRelationList();
+	void setRecipeArticleRelationList(List<RecipeArticleRelation> recipeArticleRelations);
 }

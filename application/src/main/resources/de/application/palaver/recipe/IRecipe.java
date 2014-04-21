@@ -23,4 +23,7 @@ public interface IRecipe extends IEntityName{
 	
 	List<Article> getArticleList();
 	void setArticleList(List<Article> articles);
+	
+	List<RecipeArticleRelation> getRecipeArticleRelationList();
+	void setRecipeArticleRelationList(List<RecipeArticleRelation> recipeArticleRelations);
 }
