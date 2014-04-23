@@ -6,7 +6,8 @@ public enum TablesEnum {
 	ARTICLE("artikel"),
 	EMPLOYEE_PERMISSION("mitarbeiter_has_rollen"), 
 	PREPARATION("rollen"),
-	RECIPE("test");
+	RECIPE("test"), 
+	QUANTITY_UNIT("Mengeneinheit");
 	
 	private String m_table;
 	 
