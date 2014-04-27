@@ -2268,7 +2268,7 @@ table {
   padding: 8px;
   line-height: 20px;
   text-align: left;
-  vertical-align: top;
+  vertical-align: middle;
   border-top: 1px solid #dddddd;
 }
 .table th {
@@ -11477,6 +11477,16 @@ td {
 	border:none !important;
 }
 
+td span.ui-spinner{
+	width:95%
+
+}
+
+td span.ui-spinner input{
+	width:88%;
+	margin-right: 17px;
+margin-bottom: 0px;
+}
 
 .width336 input{
 	width:336px;
@@ -11549,7 +11559,6 @@ thead tr{
 }
 
 .btn-action:HOVER {
-	font-size: 16px;
 	  color: lightblue; 
-
 }
+

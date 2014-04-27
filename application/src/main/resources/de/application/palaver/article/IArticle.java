@@ -12,4 +12,8 @@ public interface IArticle extends IEntityName {
 	
 	List<RecipeArticleRelation> getRecipeArticleRelationList();
 	void setRecipeArticleRelationList(List<RecipeArticleRelation> recipeArticleRelations);
+	
+	QuantityUnit getQuantityUnit();
+	void setQuantityUnit(QuantityUnit quantityUnit);
+	
 }

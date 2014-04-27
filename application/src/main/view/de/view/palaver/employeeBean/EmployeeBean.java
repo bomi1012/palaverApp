@@ -44,9 +44,6 @@ public class EmployeeBean implements Serializable {
 
 	public void onRowSelect(SelectEvent event) {
 		setVisibleInfoBlock(true);
-		System.out.println(" 1 "
-				+ ((Employee) event.getObject()).getFirstname());
-
 	}
 
 	private boolean m_visibleInfoBlock;

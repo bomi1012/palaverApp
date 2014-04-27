@@ -3,6 +3,7 @@ package de.application.palaver.recipe.service;
 import java.util.List;
 
 import de.application.palaver.recipe.Preparation;
+import de.application.palaver.recipe.RecipeType;
 import de.application.palaver.recipe.dao.RecipeDAO;
 
 
@@ -23,6 +24,15 @@ private static RecipeService m_instance = null;
 	public List<Preparation> findAllPreparations() {
 		try {
 			return RecipeDAO.getInstance().findAllPreparations();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null; 
+	}
+
+	public List<RecipeType> findAllTypes() {
+		try {
+			return RecipeDAO.getInstance().findAllRecipeTypes();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -21,6 +21,12 @@ public class Article extends EntityName implements IArticle {
 		m_recipeArticleRelationList = recipeArticleRelations; 
 	}
 	
+	private QuantityUnit m_quantityUnit;	
+	@Override
+	public QuantityUnit getQuantityUnit() { return m_quantityUnit; }
+	@Override
+	public void setQuantityUnit(QuantityUnit quantityUnit) { m_quantityUnit = quantityUnit; }
+	
 	public Article() {
 		super();
 	}
@@ -29,6 +35,7 @@ public class Article extends EntityName implements IArticle {
 		super(id, name);
 		m_number = number;
 	}
+
 
 	
 }

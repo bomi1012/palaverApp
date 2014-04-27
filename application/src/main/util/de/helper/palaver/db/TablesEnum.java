@@ -5,9 +5,10 @@ public enum TablesEnum {
 	PERMISSION("rollen"), 
 	ARTICLE("artikel"),
 	EMPLOYEE_PERMISSION("mitarbeiter_has_rollen"), 
-	PREPARATION("rollen"),
-	RECIPE("test"), 
-	QUANTITY_UNIT("Mengeneinheit");
+	RECIPE("rezepte"),
+	RECIPE_PREPARATION("zubereitung"),
+	RECIPE_TYPES("rezeptart"),
+	QUANTITY_UNIT("mengeneinheit");
 	
 	private String m_table;
 	 
