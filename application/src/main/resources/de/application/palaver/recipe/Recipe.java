@@ -19,6 +19,14 @@ public class Recipe extends EntityName implements IRecipe{
 	@Override
 	public void setEmployee(Employee employee) { m_employee = employee; }
 	
+	private RecipeType m_recipeType;
+	@Override
+	public RecipeType getRecipeType() { return m_recipeType; }
+	@Override
+	public void setRecipeType(RecipeType recipeType) { m_recipeType = recipeType; }
+	
+	
+	//TODO: --> M:N
 	private List<Menu> m_menus;
 	@Override
 	public List<Menu> getMenuList() { return m_menus; }
@@ -30,18 +38,14 @@ public class Recipe extends EntityName implements IRecipe{
 	public List<Article> getArticleList() { return m_articles; }
 	@Override
 	public void setArticleList(List<Article> articles) { m_articles = articles; }
-	
+
 	private Preparation m_preparation;
 	@Override
 	public Preparation getPreparation() { return m_preparation; }
 	@Override
 	public void setPreparation(Preparation preparation) { m_preparation = preparation; }
 	
-	private RecipeType m_recipeType;
-	@Override
-	public RecipeType getRecipeType() { return m_recipeType; }
-	@Override
-	public void setRecipeType(RecipeType recipeType) { m_recipeType = recipeType; }
+
 	
 	private List<RecipeArticleRelation> m_recipeArticleRelationList;
 	@Override
@@ -68,5 +72,6 @@ public class Recipe extends EntityName implements IRecipe{
 		m_preparation = preparation;
 		m_recipeType = recipeType;
 	}
+
 
 }

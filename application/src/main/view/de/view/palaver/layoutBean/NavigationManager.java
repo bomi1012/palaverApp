@@ -2,7 +2,6 @@ package de.view.palaver.layoutBean;
 
 import java.io.IOException;
 import java.io.Serializable;
-import java.util.Map;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -19,7 +18,6 @@ public class NavigationManager implements Serializable{
 	private static final String PATH = "/pages/";
 	private FacesContext m_facesContext;
 	private HttpServletRequest m_request;
-	private Map<String,String> m_params;
 	
 	public NavigationManager() {
 		super();

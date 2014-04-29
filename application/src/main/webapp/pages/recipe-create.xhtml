@@ -26,9 +26,10 @@
 							<h:inputText title="recipe" style="width:207px" />
 
 							<h:outputLabel value="Rezeptart:" styleClass="information-block" />
-							<h:selectOneMenu value="Rezeptart_id">
+							<h:selectOneMenu value="#{recipeBean.selectedType}" id="wwww"
+								converter="convert">
 								<f:selectItems value="#{recipeBean.recipeTypeList}" var="type"
-									itemLabel="#{type.name}" itemValue="#{type.id}" />
+									itemValue="#{type}" itemLabel="#{type.name}" />
 							</h:selectOneMenu>
 
 							<h:outputLabel value="Koch:" styleClass="information-block" />
@@ -123,8 +124,8 @@
 			</p:droppable>
 		</div>
 
-		<p:commandButton type="submit"
-			actionListener="#{recipeBean.testButtonActionListener}"></p:commandButton>
+		<p:commandButton type="submit" value="Speichern"
+			actionListener="#{recipeBean.testButtonActionListener}" styleClass="btn btn-primary rigth"/> 
 	</h:form>
 </h:body>
 
