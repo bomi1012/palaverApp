@@ -34,24 +34,38 @@ public class RecipeBean implements Serializable {
 	public Recipe getRecipe() { return m_recipe; }
 	public void setRecipe(Recipe recipe) { m_recipe = recipe; }
 	
+	/*RecipeType*/
+	private List<RecipeType> m_recipeTypeList;
+	public List<RecipeType> getRecipeTypeList() { return m_recipeTypeList;  }
+	public void setRecipeTypeList(List<RecipeType> recipeTypeList) { m_recipeTypeList = recipeTypeList; } 
+	
 	private RecipeType m_selectedType;
 	public RecipeType getSelectedType() { return m_selectedType; }
 	public void setSelectedType(RecipeType selectedType) { m_selectedType = selectedType; }
 	
-	private DualListModel<Preparation> m_preparationList;
-	public DualListModel<Preparation> getPreparationList() { return m_preparationList; }
-	public void setPreparationList(DualListModel<Preparation> preparationList) { m_preparationList = preparationList; }
-	
-	private List<RecipeType> m_recipeTypeList;
-	public List<RecipeType> getRecipeTypeList() { return m_recipeTypeList;  }
-	public void setRecipeTypeList(List<RecipeType> recipeTypeList) { m_recipeTypeList = recipeTypeList; }  
-
+	/*RecipeType*/
 	private List<Employee> m_employeeList;
 	public List<Employee> getEmployeeList() { return m_employeeList; }
 	public void setEmployeeList(List<Employee> employeeList) { m_employeeList = employeeList; }
 	
 	private Employee m_currentEmployee;
 	public Employee getCurrentEmployee() { return m_currentEmployee; }
+	
+	private Employee m_selectedEmployee;
+	public Employee getSelectedEmployee() { return m_selectedEmployee; }
+	public void setSelectedEmployee(Employee selectedEmployee) { m_selectedEmployee = selectedEmployee; }
+	
+	
+	
+	
+	
+	private DualListModel<Preparation> m_preparationList;
+	public DualListModel<Preparation> getPreparationList() { return m_preparationList; }
+	public void setPreparationList(DualListModel<Preparation> preparationList) { m_preparationList = preparationList; }
+	
+ 
+
+	
 	
 	private List<RecipeArticleRelation> m_recipeItemList;
 	public List<RecipeArticleRelation> getRecipeItemList() { return m_recipeItemList; }
@@ -69,23 +83,34 @@ public class RecipeBean implements Serializable {
  		m_recipeItemList = new ArrayList<RecipeArticleRelation>();
  		m_employeeList = EmployeeService.getInstance().getAllOnlyTable();
  		m_currentEmployee = (Employee) FacesContext.getCurrentInstance().getExternalContext()
-				.getSessionMap().get(IBeanDictionary.AUTHORIZED_USER);
+				.getSessionMap().get(IBeanDictionary.AUTHORIZED_USER);	 		
  		m_recipeTypeList = RecipeService.getInstance().findAllTypes();
+ 		
+ 		
+ 		/*********************/
  		
 		FacesContext.getCurrentInstance()
 		.getExternalContext()
 		.getSessionMap()
 		.put(IBeanDictionary.RECIPE_TYPE_LIST, m_recipeTypeList);	
+		
+		FacesContext.getCurrentInstance()
+		.getExternalContext()
+		.getSessionMap()
+		.put(IBeanDictionary.EMPLOYEE_LIST, m_employeeList);	
 	}
 
 
     public void testButtonActionListener(ActionEvent event) {
-        System.out.println("testButtonActionListener invoked: " + m_selectedType.getName());
-        
+        System.out.println("testButtonActionListener invoked: " + m_selectedEmployee.getFirstname());
+        m_recipe.setRecipeType(m_selectedType);
 
     }
     
-
+    public void valueChangeMethod(ValueChangeEvent e){
+		//TODO: hier implementieren
+    	System.out.print("hier");
+	}
 
 	 public void onDrop(DragDropEvent ddEvent) {  		 
 		 	System.out.println("onDrop Start");		 

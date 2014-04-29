@@ -23,23 +23,28 @@
 						<h:panelGrid columns="2" cellpadding="5">
 							<h:outputLabel value="Bezeichnung* :"
 								styleClass="information-block" />
-							<h:inputText title="recipe" style="width:207px" />
+							<h:inputText id="receptNameId" title="recipe" style="width:207px"
+								value="#{recipeBean.recipe.name}" />
+							<p:watermark for="receptNameId" value="Trage den Rezeptname ein" />
 
 							<h:outputLabel value="Rezeptart:" styleClass="information-block" />
-							<h:selectOneMenu value="#{recipeBean.selectedType}" id="recipeTypeId"
-								converter="recipeTypeConverter">
+							<h:selectOneMenu value="#{recipeBean.selectedType}"
+								id="recipeTypeId" converter="recipeTypeConverter">
 								<f:selectItems value="#{recipeBean.recipeTypeList}" var="type"
 									itemValue="#{type}" itemLabel="#{type.name}" />
 							</h:selectOneMenu>
 
 							<h:outputLabel value="Koch:" styleClass="information-block" />
-							<p:inplace id="selectableInplace"
+							<p:inplace id="selectableInplace" 
 								label="#{recipeBean.currentEmployee.nickname}"
 								effectSpeed="fast" event="dblclick" styleClass="span4">
-								<h:selectOneMenu value="employee_id">
+								<h:selectOneMenu value="#{recipeBean.selectedEmployee}" 
+								onchange="submit()"
+								valueChangeListener="#{recipeBean.valueChangeMethod}"
+								id="employeeId" converter="employeeConverter">
 									<f:selectItems value="#{recipeBean.employeeList}"
 										var="employee" itemLabel="#{employee.nickname}"
-										itemValue="#{employee.id}" />
+										itemValue="#{employee}" />
 								</h:selectOneMenu>
 							</p:inplace>
 							<h:outputLabel value="Kommentar:" styleClass="information-block" />
@@ -65,9 +70,9 @@
 					</div>
 					<div class="box-content">
 
-						<p:pickList id="pickList" value="#{recipeBean.preparationList}" converter="preparationConverter"
-							var="preparation" itemLabel="#{preparation.name}" 
-							itemValue="#{preparation}" />
+						<p:pickList id="pickList" value="#{recipeBean.preparationList}"
+							converter="preparationConverter" var="preparation"
+							itemLabel="#{preparation.name}" itemValue="#{preparation}" />
 
 					</div>
 				</div>
@@ -125,7 +130,8 @@
 		</div>
 
 		<p:commandButton type="submit" value="Speichern"
-			actionListener="#{recipeBean.testButtonActionListener}" styleClass="btn btn-primary rigth"/> 
+			actionListener="#{recipeBean.testButtonActionListener}"
+			styleClass="btn btn-primary rigth" />
 	</h:form>
 </h:body>
 
