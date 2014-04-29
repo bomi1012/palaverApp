@@ -82,9 +82,7 @@ public class RecipeBean implements Serializable {
     public void testButtonActionListener(ActionEvent event) {
         System.out.println("testButtonActionListener invoked: " + m_selectedType.getName());
         
-        //m_recipe.setRecipeType(m_selectedType);
-        m_recipe.setEmployee((Employee)FacesContext.getCurrentInstance().getExternalContext()
-		.getSessionMap().get(IBeanDictionary.AUTHORIZED_USER));
+
     }
     
 

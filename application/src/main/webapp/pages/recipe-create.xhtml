@@ -26,8 +26,8 @@
 							<h:inputText title="recipe" style="width:207px" />
 
 							<h:outputLabel value="Rezeptart:" styleClass="information-block" />
-							<h:selectOneMenu value="#{recipeBean.selectedType}" id="wwww"
-								converter="convert">
+							<h:selectOneMenu value="#{recipeBean.selectedType}" id="recipeTypeId"
+								converter="recipeTypeConverter">
 								<f:selectItems value="#{recipeBean.recipeTypeList}" var="type"
 									itemValue="#{type}" itemLabel="#{type.name}" />
 							</h:selectOneMenu>
@@ -65,9 +65,9 @@
 					</div>
 					<div class="box-content">
 
-						<p:pickList id="pickList" value="#{recipeBean.preparationList}"
-							var="preparation" itemLabel="#{preparation.name}"
-							itemValue="#{preparation.name}" />
+						<p:pickList id="pickList" value="#{recipeBean.preparationList}" converter="preparationConverter"
+							var="preparation" itemLabel="#{preparation.name}" 
+							itemValue="#{preparation}" />
 
 					</div>
 				</div>
