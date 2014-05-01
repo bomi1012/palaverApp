@@ -11483,7 +11483,7 @@ td span.ui-spinner{
 }
 
 td span.ui-spinner input{
-	width:88%;
+	width:84%;
 	margin-right: 17px;
 margin-bottom: 0px;
 }
@@ -11493,8 +11493,8 @@ margin-bottom: 0px;
 }
 
 .filterFielTable {
-	height: 10px; 
-	margin-bottom: 15px !important;
+	height: 12px; 
+	margin-bottom: 10px !important;
 	margin-top: 5px !important;
 }
 

@@ -50,11 +50,14 @@ public class RecipeBean implements Serializable {
  	/*RecipeArticleRelation*/
 	private List<RecipeArticleRelation> m_recipeItemList;
 	public List<RecipeArticleRelation> getRecipeItemList() { return m_recipeItemList; }
-
-	
 	
 	private List<Article> m_availableArticles;	
 	public List<Article> getAvailableArticles() { return m_availableArticles; }
+	
+	/*Filter*/
+	private List<Article> m_filterList;
+	public List<Article> getFilter() { return m_filterList; }
+	public void setFilter(List<Article> list) { m_filterList = list; }
 	
 	public RecipeBean() {
 		m_recipe = new Recipe();
