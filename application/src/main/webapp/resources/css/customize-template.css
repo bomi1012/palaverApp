@@ -11570,3 +11570,12 @@ thead tr{
 	border: none !important; 
  	background: none !important;
 }
+
+h2.head_text{
+	margin: 5px 0px 10px 60px;
+}
+
+div.topForHead{
+	margin-left: 10px;
+	margin-top: 20px;
+}

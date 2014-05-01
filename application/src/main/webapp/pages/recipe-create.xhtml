@@ -11,13 +11,16 @@
 <h:body>
 	<h:form id="formID">
 		<div class="span16">
+			<h2 class="head_text"><i class="fa fa-pencil-square-o fa-2x" />#{msg['dictionary.recipe.create']}</h2>
+			<p:separator id="separator" />
 			<!-- Infoblock -->
 			<div class="span7">
+				<div class="topForHead">
+					<h3>
+						<i class="fa fa-pencil fa-1x" /> #{msg['dictionary.information']}
+					</h3>
+				</div>
 				<div class="box">
-					<div class="box-header">
-						<i class="fa fa-pencil fa-2x"></i>
-						<h5>#{msg['dictionary.information']}</h5>
-					</div>
 					<div class="box-content">
 						<h:panelGrid columns="2" cellpadding="5" id="grid">
 							<h:outputText />
@@ -51,11 +54,12 @@
 			</div>
 			<!-- PickList -->
 			<div class="span8">
+			<div class="topForHead">
+					<h3>
+						<i class="fa fa-retweet fa-1x" /> #{msg['dictionary.preparation']}
+					</h3>
+				</div>
 				<div class="box">
-					<div class="box-header">
-						<i class="fa fa-retweet fa-2x"></i>
-						<h5>#{msg['dictionary.preparation']}</h5>
-					</div>
 					<div class="box-content">
 						<p:pickList id="pickList" value="#{recipeBean.preparationList}"
 							converter="preparationConverter" var="preparation"
@@ -69,11 +73,15 @@
 
 			<!-- Table 1 -->
 			<div class="span10" id="selected">
+				<div class="topForHead">
+					<h3>
+						<i class="fa fa-crosshairs fa-1x" /> #{msg['dictionary.text.aricleselectdown']}
+					</h3>
+				</div>
 				<p:outputPanel id="dropArea">
 					<p:dataTable id="table_dropped" var="recipe"
 						value="#{recipeBean.recipeItemList}"
 						styleClass="table table-hover">
-						<f:facet name="header">#{msg['dictionary.text.aricleselectdown']}</f:facet>
 						<p:column headerText="#{msg['dictionary.article.name']}">
 							<h:outputText value="#{recipe.article.name}"
 								styleClass="vertical-center" />
@@ -94,10 +102,14 @@
 			</div>
 			<!-- Table 2 -->
 			<div class="span5" id="produkts">
+				<div class="topForHead">
+					<h3>
+						<i class="fa fa fa-arrows fa-1x" /> #{msg['dictionary.text.aricleselectdrop']}
+					</h3>
+				</div>
 				<p:dataTable id="availableArticles" var="article"
 					value="#{recipeBean.availableArticles}"
 					styleClass="table table-hover" scrollable="true" scrollHeight="400">
-					<f:facet name="header">#{msg['dictionary.text.aricleselectdrop']}</f:facet>
 					<p:column style="width:10px">
 						<h:outputText id="dragIcon" styleClass="ui-icon ui-icon-arrow-4" />
 						<p:draggable for="dragIcon" revert="true" />
