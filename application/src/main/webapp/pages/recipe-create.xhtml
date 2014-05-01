@@ -9,82 +9,83 @@
 	xmlns:a4j="http://richfaces.org/a4j" xmlns:p="http://primefaces.org/ui">
 
 <h:body>
-
-	<h:form id="hallo">
-
+	<h:form id="formID">
 		<div class="span16">
+			<!-- Infoblock -->
 			<div class="span7">
 				<div class="box">
 					<div class="box-header">
 						<i class="fa fa-pencil fa-2x"></i>
-						<h5>Information</h5>
+						<h5>#{msg['dictionary.information']}</h5>
 					</div>
 					<div class="box-content">
-						<h:panelGrid columns="2" cellpadding="5">
-							<h:outputLabel value="Bezeichnung* :"
+						<h:panelGrid columns="2" cellpadding="5" id="grid">
+							<h:outputText />
+							<p:message for="receptNameId" />
+							<h:outputLabel value="#{msg['dictionary.recipe.name']}* :"
 								styleClass="information-block" />
-							<h:inputText id="receptNameId" title="recipe" style="width:207px"
-								value="#{recipeBean.recipe.name}" required="true" />
-						
-							<h:outputLabel value="Rezeptart:" styleClass="information-block" />
+							<h:inputText id="receptNameId" title="recipe" style="width:95%;"
+								value="#{recipeBean.recipe.name}" required="true"
+								requiredMessage="#{msg['dictionary.text.fieldnotempty']}" />
+
+							<h:outputLabel value="#{msg['dictionary.recipe.recipetype']}:"
+								styleClass="information-block" />
 							<h:selectOneMenu value="#{recipeBean.selectedType}"
-								id="recipeTypeId" converter="recipeTypeConverter">
+								styleClass="breite100" id="recipeTypeId"
+								converter="recipeTypeConverter">
 								<f:selectItems value="#{recipeBean.recipeTypeList}" var="type"
 									itemValue="#{type}" itemLabel="#{type.name}" />
 							</h:selectOneMenu>
 
-							<h:outputLabel value="Kommentar:" styleClass="information-block" />
-							<p:inputTextarea rows="5" cols="40" counter="counter" value="#{recipeBean.recipe.comment}"
-								maxlength="255" counterTemplate="{0} characters remaining." />
+							<h:outputLabel value="#{msg['dictionary.comment']}:"
+								styleClass="information-block" />
+							<p:inputTextarea rows="5" cols="40" counter="counter"
+								value="#{recipeBean.recipe.comment}" maxlength="255"
+								counterTemplate="#{msg['dictionary.characters.remaining']}" />
 
 							<h:outputText />
 							<h:outputText id="counter" />
 						</h:panelGrid>
-
 					</div>
 				</div>
 			</div>
-
-
-
+			<!-- PickList -->
 			<div class="span8">
-
 				<div class="box">
 					<div class="box-header">
 						<i class="fa fa-retweet fa-2x"></i>
-						<h5>Zubereitung</h5>
+						<h5>#{msg['dictionary.preparation']}</h5>
 					</div>
 					<div class="box-content">
-
 						<p:pickList id="pickList" value="#{recipeBean.preparationList}"
 							converter="preparationConverter" var="preparation"
 							itemLabel="#{preparation.name}" itemValue="#{preparation}" />
-
 					</div>
 				</div>
-
 			</div>
 		</div>
 
 		<div class="span16">
+
+			<!-- Table 1 -->
 			<div class="span10" id="selected">
 				<p:outputPanel id="dropArea">
 					<p:dataTable id="table_dropped" var="recipe"
 						value="#{recipeBean.recipeItemList}"
-						styleClass="table table-hover test">
-
-						<p:column headerText="Artikelname">
+						styleClass="table table-hover">
+						<f:facet name="header">#{msg['dictionary.text.aricleselectdown']}</f:facet>
+						<p:column headerText="#{msg['dictionary.article.name']}">
 							<h:outputText value="#{recipe.article.name}"
 								styleClass="vertical-center" />
 						</p:column>
 
 
-						<p:column headerText="Menge">
+						<p:column headerText="#{msg['dictionary.quantity']}">
 							<p:spinner id="quantity_id" value="#{recipe.quantity}"
 								stepFactor="0.25" min="0.0" />
 						</p:column>
 
-						<p:column headerText="Mengeneinheit">
+						<p:column headerText="#{msg['dictionary.quantityunit']}">
 							<h:outputText value="#{recipe.article.quantityUnit.name}" />
 						</p:column>
 
@@ -93,32 +94,34 @@
 			</div>
 			<!-- Table 2 -->
 			<div class="span5" id="produkts">
-				<p:dataTable id="availableCars" var="article"
+				<p:dataTable id="availableArticles" var="article"
 					value="#{recipeBean.availableArticles}"
 					styleClass="table table-hover" scrollable="true" scrollHeight="400">
+					<f:facet name="header">#{msg['dictionary.text.aricleselectdrop']}</f:facet>
 					<p:column style="width:10px">
 						<h:outputText id="dragIcon" styleClass="ui-icon ui-icon-arrow-4" />
 						<p:draggable for="dragIcon" revert="true" />
 					</p:column>
-					<p:column headerText="Nummer" width="30%">
+					<p:column headerText="#{msg['dictionary.number']}" width="30%">
 						<h:outputText value="#{article.number}" />
 					</p:column>
-					<p:column headerText="Name" width="70%">
+					<p:column headerText="#{msg['dictionary.name']}" width="70%">
 						<h:outputText value="#{article.name}" />
 					</p:column>
 				</p:dataTable>
 			</div>
-			<p:droppable for="dropArea" datasource="availableCars"
+			<p:droppable for="dropArea" datasource="availableArticles"
 				activeStyleClass="ui-state-highlight" tolerance="touch">
 				<p:ajax listener="#{recipeBean.onDrop}"
-					update="availableCars table_dropped" onDrop="handleDrop" />
+					update="availableArticles table_dropped" onDrop="handleDrop" />
 			</p:droppable>
 		</div>
 
-		<p:commandButton type="submit" value="Rezept speichern"
+		<p:commandButton type="submit"
+			value="#{msg['dictionary.recipe']} #{msg['dictionary.command.save']}"
+			update="grid"
 			actionListener="#{recipeBean.createButtonActionListener}"
 			styleClass="btn btn-primary rigth" />
 	</h:form>
 </h:body>
-
 </html>

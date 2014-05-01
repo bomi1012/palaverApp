@@ -11562,3 +11562,11 @@ thead tr{
 	  color: lightblue; 
 }
 
+.breite100{
+	width: 100%
+}
+
+.ui-widget-header{
+	border: none !important; 
+ 	background: none !important;
+}
