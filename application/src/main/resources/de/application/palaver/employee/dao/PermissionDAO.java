@@ -63,29 +63,29 @@ public class PermissionDAO extends AbstractDAO implements IPermissionDAO {
 	
 	
 	
-	@Override
-	public long create() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void delete() {
-		// TODO Auto-generated method stub
-
-	}
-	
 	
 //////PRIVATE METHODE ////////	
 	private Permission setPermission(ResultSet resultSet) throws SQLException {
 		return new Permission(
 				resultSet.getLong(FIELD_ID),
 				resultSet.getString(FIELD_NAME));
+	}
+
+	@Override
+	public long create(Object o) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void update(Object o) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(Object o) {
+		// TODO Auto-generated method stub
+		
 	}
 }

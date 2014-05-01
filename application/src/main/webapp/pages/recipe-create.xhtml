@@ -25,8 +25,7 @@
 								styleClass="information-block" />
 							<h:inputText id="receptNameId" title="recipe" style="width:207px"
 								value="#{recipeBean.recipe.name}" />
-							<p:watermark for="receptNameId" value="Trage den Rezeptname ein" />
-
+						
 							<h:outputLabel value="Rezeptart:" styleClass="information-block" />
 							<h:selectOneMenu value="#{recipeBean.selectedType}"
 								id="recipeTypeId" converter="recipeTypeConverter">
@@ -34,21 +33,8 @@
 									itemValue="#{type}" itemLabel="#{type.name}" />
 							</h:selectOneMenu>
 
-							<h:outputLabel value="Koch:" styleClass="information-block" />
-							<p:inplace id="selectableInplace" 
-								label="#{recipeBean.currentEmployee.nickname}"
-								effectSpeed="fast" event="dblclick" styleClass="span4">
-								<h:selectOneMenu value="#{recipeBean.selectedEmployee}" 
-								onchange="submit()"
-								valueChangeListener="#{recipeBean.valueChangeMethod}"
-								id="employeeId" converter="employeeConverter">
-									<f:selectItems value="#{recipeBean.employeeList}"
-										var="employee" itemLabel="#{employee.nickname}"
-										itemValue="#{employee}" />
-								</h:selectOneMenu>
-							</p:inplace>
 							<h:outputLabel value="Kommentar:" styleClass="information-block" />
-							<p:inputTextarea rows="5" cols="40" counter="counter"
+							<p:inputTextarea rows="5" cols="40" counter="counter" value="#{recipeBean.recipe.comment}"
 								maxlength="255" counterTemplate="{0} characters remaining." />
 
 							<h:outputText />

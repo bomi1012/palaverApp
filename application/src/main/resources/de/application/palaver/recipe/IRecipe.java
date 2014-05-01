@@ -9,14 +9,25 @@ import de.helper.palaver.entities.IEntityName;
 
 public interface IRecipe extends IEntityName{
 	
-	Preparation getPreparation();
-	void setPreparation(Preparation preparation);
+	String getComment();
+	void setComment(String comment);
 	
-	RecipeType getRecipeType();
-	void setRecipeType(RecipeType recipeType);
+	/***************/
+	/** Relations **/
+	/***************/
 	
 	Employee getEmployee();
 	void setEmployee(Employee employee);
+	
+	RecipeType getRecipeType();
+	void setRecipeType(RecipeType recipeType);	
+	
+	List<Preparation> getPreparationList();
+	void setPreparationList(List<Preparation> preparations);
+	
+	
+	
+	
 	
 	List<Menu> getMenuList();
 	void setMenuList(List<Menu> menus);

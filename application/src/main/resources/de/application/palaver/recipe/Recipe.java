@@ -9,9 +9,15 @@ import de.helper.palaver.entities.EntityName;
 
 public class Recipe extends EntityName implements IRecipe{
 	
-	/************************/
-	/** Getters and Setters */
-	/************************/
+	/*************************/
+	/** Getters and Setters **/
+	/*************************/
+	
+	private String m_commnet;
+	@Override
+	public String getComment() { return m_commnet; }
+	@Override
+	public void setComment(String comment) { m_commnet = comment; }
 
 	private Employee m_employee; 
 	@Override
@@ -24,6 +30,16 @@ public class Recipe extends EntityName implements IRecipe{
 	public RecipeType getRecipeType() { return m_recipeType; }
 	@Override
 	public void setRecipeType(RecipeType recipeType) { m_recipeType = recipeType; }
+	
+	private List<Preparation> m_preparations;
+	@Override
+	public List<Preparation> getPreparationList() { return m_preparations; }
+	@Override
+	public void setPreparationList(List<Preparation> preparations) { m_preparations = preparations; }
+	
+	
+	
+	
 	
 	
 	//TODO: --> M:N
@@ -39,12 +55,6 @@ public class Recipe extends EntityName implements IRecipe{
 	@Override
 	public void setArticleList(List<Article> articles) { m_articles = articles; }
 
-	private Preparation m_preparation;
-	@Override
-	public Preparation getPreparation() { return m_preparation; }
-	@Override
-	public void setPreparation(Preparation preparation) { m_preparation = preparation; }
-	
 
 	
 	private List<RecipeArticleRelation> m_recipeArticleRelationList;
@@ -63,15 +73,38 @@ public class Recipe extends EntityName implements IRecipe{
 		super();
 	}
 	
-	public Recipe(long id, String name, Employee employee, List<Menu> menus,
-			List<Article> articles, Preparation preparation, RecipeType recipeType) {
+	/**
+	 * nur Tabelle Rezept
+	 * @param id
+	 * @param name
+	 * @param comment
+	 */
+	public Recipe(long id, String name, String comment) {
+		this(id, name, comment, null, null, null, null, null);
+	}
+	
+	/**
+	 * Tabelle Rezept mit andere Tabellen
+	 * @param id
+	 * @param name
+	 * @param comment
+	 * @param employee
+	 * @param menus
+	 * @param articles
+	 * @param preparation
+	 * @param recipeType
+	 */
+	public Recipe(long id, String name, String comment, Employee employee, List<Menu> menus,
+			List<Article> articles, List<Preparation> preparations, RecipeType recipeType) {
 		super(id, name);
+		m_commnet = comment;
 		m_employee = employee;
 		m_menus = menus;
 		m_articles = articles;
-		m_preparation = preparation;
+		m_preparations = preparations;
 		m_recipeType = recipeType;
 	}
+
 
 
 }

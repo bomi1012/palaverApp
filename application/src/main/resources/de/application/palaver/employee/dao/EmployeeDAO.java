@@ -72,23 +72,6 @@ public class EmployeeDAO extends AbstractDAO implements IEmployeeDAO {
 		return m_employee;
 	}
 
-	@Override
-	public long create() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void delete() {
-		// TODO Auto-generated method stub
-		
-	}
 	
 	////// PRIVATE METHODE ////////	
 	private Employee setEmployee(ResultSet resultSet) throws SQLException {
@@ -110,6 +93,24 @@ public class EmployeeDAO extends AbstractDAO implements IEmployeeDAO {
 				resultSet.getString(FIELD_NICKNAME),
 				resultSet.getString(FIELD_PASSWORD), 
 				resultSet.getString(FIELD_EMAIL), null, null, null);
+	}
+
+	@Override
+	public long create(Object o) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void update(Object o) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(Object o) {
+		// TODO Auto-generated method stub
+		
 	}
 
 

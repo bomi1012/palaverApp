@@ -22,22 +22,23 @@ public class MenuDAO implements IMenuDAO {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
+
 	@Override
-	public long create() {
+	public long create(Object o) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public void update() {
+	public void update(Object o) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
-	public void delete() {
+	public void delete(Object o) {
 		// TODO Auto-generated method stub
-
+		
 	}
+
 }

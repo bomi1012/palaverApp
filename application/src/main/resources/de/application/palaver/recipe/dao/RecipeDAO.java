@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.application.palaver.recipe.Preparation;
+import de.application.palaver.recipe.Recipe;
+import de.application.palaver.recipe.RecipeArticleRelation;
 import de.application.palaver.recipe.RecipeType;
 import de.helper.palaver.db.AbstractDAO;
 import de.helper.palaver.db.TablesEnum;
@@ -52,26 +54,58 @@ public class RecipeDAO extends AbstractDAO implements IRecipeDAO {
 		return m_recipeTypeList;
 	}
 	
-
-
+	
 
 	@Override
-	public long create() {
-		// TODO Auto-generated method stub
-		return 0;
+	public long create(Object o) throws ConnectException, DAOException {
+		if(o instanceof Recipe) {
+			Recipe recipe = (Recipe) o;
+			return putManaged("INSERT INTO " + TablesEnum.RECIPE.getName() + " (" + 
+					FIELD_NAME + ", " + 
+					FIELD_COMMENT + ", " +
+					FIELD_RECIPE_TYPE_FK + ", " +
+					FIELD_EMPLOYEE_FK + ") VALUES ('" + 
+					recipe.getName() + "', '" + 
+					recipe.getComment() + "', " +
+					recipe.getRecipeType().getId() + ", " +
+					recipe.getEmployee().getId() + ")");
+		}
+		return -1L;
+	}
+	
+	//TODO: use not putManaged
+	public long addRelationsForRecipe(long recipeId, Object o) throws ConnectException, DAOException {
+		if(o instanceof Preparation) {
+			return putManaged("INSERT INTO " + TablesEnum.RECIPE_HAS_PREPARATION.getName() + " (" + 
+					FIELD_RECIPE_FK + ", " + 
+					FIELD_PREPARATION_FK + ") VALUES (" + 
+					recipeId + ", " + 
+					((Preparation) o).getId() + ")");
+		} 
+		if (o instanceof RecipeArticleRelation) {
+			return putManaged("INSERT INTO " + TablesEnum.RECIPE_HAS_ARTICLE.getName() + " (" + 
+					FIELD_RECIPE_FK + ", " + 
+					FIELD_ARTICLE_FK + ", " +
+					FIELD_QUANTITY + ") VALUES (" + 
+					recipeId + ", " + 
+					((RecipeArticleRelation) o).getArticle().getId() + ", " +
+					((RecipeArticleRelation) o).getQuantity() + ")");
+		}
+		return -1L;
 	}
 
 	@Override
-	public void update() {
+	public void update(Object o) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
-	public void delete() {
+	public void delete(Object o) {
 		// TODO Auto-generated method stub
+		
+	}
 
-	}	
 	
 	private Preparation setPreparation(ResultSet resultSet) throws SQLException {
 		return new Preparation(
@@ -84,5 +118,6 @@ public class RecipeDAO extends AbstractDAO implements IRecipeDAO {
 				resultSet.getLong(FIELD_ID),
 				resultSet.getString(FIELD_NAME));
 	}
-
+	
+	
 }
