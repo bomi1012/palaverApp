@@ -24,7 +24,7 @@
 							<h:outputLabel value="Bezeichnung* :"
 								styleClass="information-block" />
 							<h:inputText id="receptNameId" title="recipe" style="width:207px"
-								value="#{recipeBean.recipe.name}" />
+								value="#{recipeBean.recipe.name}" required="true" />
 						
 							<h:outputLabel value="Rezeptart:" styleClass="information-block" />
 							<h:selectOneMenu value="#{recipeBean.selectedType}"
@@ -115,8 +115,8 @@
 			</p:droppable>
 		</div>
 
-		<p:commandButton type="submit" value="Speichern"
-			actionListener="#{recipeBean.testButtonActionListener}"
+		<p:commandButton type="submit" value="Rezept speichern"
+			actionListener="#{recipeBean.createButtonActionListener}"
 			styleClass="btn btn-primary rigth" />
 	</h:form>
 </h:body>

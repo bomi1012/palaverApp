@@ -46,7 +46,14 @@ abstract public class AbstractDAO implements IDBDictionary, Serializable{
 		return m_cache.getOriginal();
 	}
 	
-	protected synchronized Long putManaged(String query) throws ConnectException, DAOException  {
+	/**
+	 * 
+	 * @param query <code>STRING</code> insert into table
+	 * @return <code>long</code> RETURN_GENERATED_KEY
+	 * @throws ConnectException
+	 * @throws DAOException
+	 */
+	protected synchronized Long insertIntoTable(String query) throws ConnectException, DAOException  {
 		m_connector.openConnection();
 		try  {
 			m_connector.getStatement().executeUpdate(query, Statement.RETURN_GENERATED_KEYS);
@@ -61,5 +68,17 @@ abstract public class AbstractDAO implements IDBDictionary, Serializable{
 			m_connector.closeConnection();	
 		}
 		return m_lastId;
+	}
+	
+	protected synchronized void putManaged(String query)
+			throws ConnectException, DAOException {
+		m_connector.openConnection();
+		try {
+			m_connector.getStatement().executeUpdate(query);
+		} catch (Exception e) {
+			throw new DAOException(String.format(DB_STATEMENT_ERROR, query, e.toString()));
+		} finally {
+			m_connector.closeConnection();
+		}
 	}
 }

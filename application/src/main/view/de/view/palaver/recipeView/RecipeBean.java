@@ -73,13 +73,13 @@ public class RecipeBean implements Serializable {
 		.put(IBeanDictionary.RECIPE_TYPE_LIST, m_recipeTypeList);	
 	}
 
-    public void testButtonActionListener(ActionEvent event) {
+    public void createButtonActionListener(ActionEvent event) {
         m_recipe.setRecipeType(m_selectedType);
         m_recipe.setEmployee((Employee) FacesContext.getCurrentInstance().getExternalContext()
 				.getSessionMap().get(IBeanDictionary.AUTHORIZED_USER));
         m_recipe.setPreparationList(m_preparationList.getTarget());
         m_recipe.setRecipeArticleRelationList(m_recipeItemList);
-        System.out.print(RecipeService.getInstance().createNewRecipe(m_recipe));
+        boolean create = RecipeService.getInstance().createNewRecipe(m_recipe);
     }
     
 	 public void onDrop(DragDropEvent ddEvent) {  		 

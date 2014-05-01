@@ -44,19 +44,16 @@ private static RecipeService m_instance = null;
 	public boolean createNewRecipe(Recipe recipe) {
 		try {
 			long recipeId = RecipeDAO.getInstance().create(recipe);
-			System.out.println("RecipeID: " + recipeId);
 			if(recipe.getPreparationList() != null &&
 					recipe.getPreparationList().size() > 0) {
 				for (Preparation preparation : recipe.getPreparationList()) {
-					Long i = RecipeDAO.getInstance().addRelationsForRecipe(recipeId, preparation);
-					System.out.println("zubereitung: " + i);
+					RecipeDAO.getInstance().addRelationsForRecipe(recipeId, preparation);
 				}	
 			}
 			if(recipe.getRecipeArticleRelationList() != null &&
 					recipe.getRecipeArticleRelationList().size() > 0) {
 				for (RecipeArticleRelation recipeArticleRelation : recipe.getRecipeArticleRelationList()) {
-					Long i = RecipeDAO.getInstance().addRelationsForRecipe(recipeId, recipeArticleRelation);
-					System.out.println("hasArticle: " + i);
+					RecipeDAO.getInstance().addRelationsForRecipe(recipeId, recipeArticleRelation);
 				}
 			}
 			return true;
