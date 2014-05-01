@@ -131,11 +131,15 @@
 			</p:droppable>
 		</div>
 
+		<p:commandButton type="button"
+			value="Vorschau"
+			styleClass="btn btn-primary" disabled="disabled"/> 
+
 		<p:commandButton type="submit"
 			value="#{msg['dictionary.recipe']} #{msg['dictionary.command.save']}"
 			update="grid"
 			actionListener="#{recipeBean.createButtonActionListener}"
-			styleClass="btn btn-primary rigth" />
+			styleClass="btn btn-success" />
 	</h:form>
 </h:body>
 </html>

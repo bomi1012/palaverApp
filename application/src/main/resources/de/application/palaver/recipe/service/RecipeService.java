@@ -1,6 +1,7 @@
 package de.application.palaver.recipe.service;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 import de.application.palaver.recipe.Preparation;
 import de.application.palaver.recipe.Recipe;
@@ -10,7 +11,8 @@ import de.application.palaver.recipe.dao.RecipeDAO;
 
 
 public class RecipeService {
-private static RecipeService m_instance = null;
+	private static final Logger LOG = Logger.getLogger(RecipeService.class.getName());
+	private static RecipeService m_instance = null;
 	
 	public static RecipeService getInstance() {
         if (m_instance == null) {
@@ -48,17 +50,20 @@ private static RecipeService m_instance = null;
 					recipe.getPreparationList().size() > 0) {
 				for (Preparation preparation : recipe.getPreparationList()) {
 					RecipeDAO.getInstance().addRelationsForRecipe(recipeId, preparation);
-				}	
+					LOG.info("Added preparation: " + preparation.getName());
+				}					
 			}
 			if(recipe.getRecipeArticleRelationList() != null &&
 					recipe.getRecipeArticleRelationList().size() > 0) {
 				for (RecipeArticleRelation recipeArticleRelation : recipe.getRecipeArticleRelationList()) {
 					RecipeDAO.getInstance().addRelationsForRecipe(recipeId, recipeArticleRelation);
+					LOG.info("Added Article: " + recipeArticleRelation.getArticle().getName() + " |+| Menge: " + 
+					recipeArticleRelation.getQuantity());
 				}
 			}
 			return true;
 		} catch (Exception e) {
-			e.printStackTrace();
+			LOG.info("Exception: " + e.toString());
 		} 	
 		return false;
 	}

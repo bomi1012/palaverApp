@@ -85,15 +85,12 @@ public class RecipeBean implements Serializable {
         boolean create = RecipeService.getInstance().createNewRecipe(m_recipe);
     }
     
-	 public void onDrop(DragDropEvent ddEvent) {  		 
-		 	System.out.println("onDrop Start");		 
+	 public void onDrop(DragDropEvent ddEvent) {  	 
 	        Article article = ((Article) ddEvent.getData());  	  
 	        m_availableArticles.remove(article);  
-	        article.setQuantityUnit(QuantityUnitService.getInstance().findByArticleId(article.getId()));
-	        
+	        article.setQuantityUnit(QuantityUnitService.getInstance().findByArticleId(article.getId()));        
 	        m_recipeItemList.add(new RecipeArticleRelation(article, 0.0));
-	        
-	        System.out.println("onDrop Finish");	
+
 	    }
 	 
 	 
