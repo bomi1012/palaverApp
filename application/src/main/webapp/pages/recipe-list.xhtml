@@ -9,16 +9,17 @@
 	xmlns:a4j="http://richfaces.org/a4j" xmlns:p="http://primefaces.org/ui">
 
 <h:body>
-
-<div class="row">
-  <div class="span16">
-  <h:form> 
-List
-  </h:form>
-  
-  </div>
-</div>
-
-	
+	<h:form id="formID">
+		<p:growl id="growl" showDetail="true" sticky="true" />
+		<div class="span16">
+			<h2 class="head_text">
+				<i class="fa fa-list-alt fa-2x" /> #{msg['dictionary.recipe.listall']}
+			</h2>
+			<p:separator id="separator" />
+			
+			
+			
+		</div>
+	</h:form>
 </h:body>
 </html>

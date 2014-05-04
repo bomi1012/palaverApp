@@ -13,9 +13,11 @@
 		<div class="span16">
 		<!-- <div class="btn-group-box">-->
 
-	        <button class="btn-action" ><i class="fa fa-list-alt fa-3x"></i><br/>Alle Rezepte anzeigen</button>
+	        <h:link outcome="recipe-list" ><button class="btn-action" >
+	        	<i class="fa fa-list-alt fa-3x"></i><br/>#{msg['dictionary.recipe.listall']}</button>
+	        </h:link>
        		<h:link outcome="recipe-create" ><button class="btn-action">
-       			<i class="fa fa-pencil-square-o fa-3x"></i><br/>Neuer Rezept anlegen</button>
+       			<i class="fa fa-pencil-square-o fa-3x"></i><br/>#{msg['dictionary.recipe.create']}</button>
        		</h:link>
 			<button class="btn-action"><i class="fa fa-eye-slash fa-3x"></i><br/>Meine Rezepte anzeigen</button>
 			<button class="btn-action"><i class="fa fa-bar-chart-o fa-3x"></i><br/>Statistik für Rezepte anzeigen</button>

@@ -38,6 +38,8 @@ public class NavigationManager implements Serializable{
 				page = PATH + "recipe-actions.xhtml";
 			} else if (uri.contains("/recipe-create.xhtml")){
 				page = PATH + "recipe-create.xhtml";
+			} else if (uri.contains("/recipe-list.xhtml")){
+				page = PATH + "recipe-list.xhtml";
 			}
 			return page;
 		} else {

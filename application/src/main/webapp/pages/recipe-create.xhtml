@@ -13,7 +13,7 @@
 		<p:growl id="growl" showDetail="true" sticky="true" />
 		<div class="span16">
 			<h2 class="head_text">
-				<i class="fa fa-pencil-square-o fa-2x" />#{msg['dictionary.recipe.create']}
+				<i class="fa fa-pencil-square-o fa-2x" /> #{msg['dictionary.recipe.create']}
 			</h2>
 			<p:separator id="separator" />
 			<!-- Infoblock -->
@@ -31,22 +31,22 @@
 							<h:outputLabel value="#{msg['dictionary.recipe.name']}* :"
 								styleClass="information-block" />
 							<h:inputText id="receptNameId" title="recipe" style="width:95%;"
-								value="#{recipeBean.recipe.name}" required="true"
+								value="#{recipeCreateBean.recipe.name}" required="true"
 								requiredMessage="#{msg['dictionary.text.fieldnotempty']}" />
 
 							<h:outputLabel value="#{msg['dictionary.recipe.recipetype']}:"
 								styleClass="information-block" />
-							<h:selectOneMenu value="#{recipeBean.selectedType}"
+							<h:selectOneMenu value="#{recipeCreateBean.selectedType}"
 								styleClass="breite100" id="recipeTypeId"
 								converter="recipeTypeConverter">
-								<f:selectItems value="#{recipeBean.recipeTypeList}" var="type"
+								<f:selectItems value="#{recipeCreateBean.recipeTypeList}" var="type"
 									itemValue="#{type}" itemLabel="#{type.name}" />
 							</h:selectOneMenu>
 
 							<h:outputLabel value="#{msg['dictionary.comment']}:"
 								styleClass="information-block" />
 							<p:inputTextarea rows="5" cols="40" counter="counter"
-								value="#{recipeBean.recipe.comment}" maxlength="255"
+								value="#{recipeCreateBean.recipe.comment}" maxlength="255"
 								counterTemplate="#{msg['dictionary.characters.remaining']}" />
 
 							<h:outputText />
@@ -65,7 +65,7 @@
 				</div>
 				<div class="box">
 					<div class="box-content">
-						<p:pickList id="pickList" value="#{recipeBean.preparationList}"
+						<p:pickList id="pickList" value="#{recipeCreateBean.preparationList}"
 							converter="preparationConverter" var="preparation"
 							itemLabel="#{preparation.name}" itemValue="#{preparation}" />
 					</div>
@@ -85,7 +85,7 @@
 				</div>
 				<p:outputPanel id="dropArea">
 					<p:dataTable id="table_dropped" var="recipe"
-						value="#{recipeBean.recipeItemList}"
+						value="#{recipeCreateBean.recipeItemList}"
 						styleClass="table table-hover">
 						<p:column headerText="#{msg['dictionary.article.name']}">
 							<h:outputText value="#{recipe.article.name}"
@@ -114,8 +114,8 @@
 					</h3>
 				</div>
 				<p:dataTable id="availableArticles" var="article"
-					value="#{recipeBean.availableArticles}"
-					filteredValue="#{recipeBean.filter}" styleClass="table table-hover"
+					value="#{recipeCreateBean.availableArticles}"
+					filteredValue="#{recipeCreateBean.filter}" styleClass="table table-hover"
 					scrollable="true" scrollHeight="400">
 					<p:column style="width:10px">
 						<h:outputText id="dragIcon" styleClass="ui-icon ui-icon-arrow-4" />
@@ -135,25 +135,25 @@
 			</div>
 			<p:droppable for="dropArea" datasource="availableArticles"
 				activeStyleClass="ui-state-highlight" tolerance="touch">
-				<p:ajax listener="#{recipeBean.onDrop}"
+				<p:ajax listener="#{recipeCreateBean.onDrop}"
 					update="availableArticles table_dropped" onDrop="handleDrop" />
 			</p:droppable>
 		</div>
 		<div class="span16 command">
 			<div class="command-button-left">
-				<p:commandButton type="button" value="Zurück"
-					styleClass="btn btn-primary" disabled="disabled"
-					icon="ui-icon-white-arrow-undo-4-16"></p:commandButton>
+				<p:button value="Zurück"
+					styleClass="btn btn-primary" outcome="recipe"
+					icon="ui-icon-white-arrow-undo-4-16" />
 
 				<p:commandButton type="button" value="Vorschau"
-					styleClass="btn btn-primary" disabled="disabled"
+					styleClass="btn btn-primary" 
 					icon="ui-icon-white-invisible-16" />
 			</div>
 			<div class="command-button-right">
 				<p:commandButton type="submit"
 					value="#{msg['dictionary.recipe']} #{msg['dictionary.command.save']}"
 					update="grid growl"
-					actionListener="#{recipeBean.createButtonActionListener}"
+					actionListener="#{recipeCreateBean.createButtonActionListener}"
 					styleClass="btn btn-success" icon="ui-icon-white-save-16" />
 			</div>
 		</div>
