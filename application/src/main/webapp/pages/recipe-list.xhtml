@@ -10,16 +10,38 @@
 
 <h:body>
 	<h:form id="formID">
-		<p:growl id="growl" showDetail="true" sticky="true" />
 		<div class="span16">
 			<h2 class="head_text">
-				<i class="fa fa-list-alt fa-2x" /> #{msg['dictionary.recipe.listall']}
+				<i class="fa fa-list-alt fa-2x" />
+				#{msg['dictionary.recipe.listall']}
 			</h2>
 			<p:separator id="separator" />
-			
-			
-			
 		</div>
+		<div class="span11">
+			
+			<p:dataTable id="table" var="recipe"
+				value="#{recipeListBean.recipeList}"
+				styleClass="table table-hover test" paginator="true" rows="45"
+				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
+
+				<p:column headerText="Rezeptname" width="45%">
+					<h:outputText value="#{recipe.name}" />
+				</p:column>
+
+				<p:column headerText="Mitarbeiter" width="10%">
+					<h:outputText value="#{recipe.employee.nickname}" />
+				</p:column>
+
+				<p:column headerText="Rezeptart" width="10%">
+					<h:outputText value="#{recipe.recipeType.name}" />
+				</p:column>
+
+				<p:column headerText="Kommentar" width="35%">
+					<h:outputText value="#{recipe.comment}" />
+				</p:column>
+			</p:dataTable>
+		</div>
+		<div class="span5"></div>
 	</h:form>
 </h:body>
 </html>

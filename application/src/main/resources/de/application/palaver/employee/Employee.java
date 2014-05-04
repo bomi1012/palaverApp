@@ -116,11 +116,11 @@ public class Employee extends Entity implements IEmployee, Serializable {
 	 */ 
 	public Employee(long id, String firstname, String lastname,	String nickname,
 			String password, String email) {
-		super(id);
-		m_firstname = firstname;
-		m_lastname = lastname;
-		m_nickname = nickname;
-		m_password = password;
-		m_email = email;
+		this(id, firstname, lastname, nickname, password, email, null, null, null);
+	}
+	
+	
+	public Employee(long id, String nickname) {
+		this(id, null, null, nickname, null, null, null, null, null);
 	}
 }

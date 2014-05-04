@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.application.palaver.employee.Employee;
 import de.application.palaver.recipe.Preparation;
 import de.application.palaver.recipe.Recipe;
 import de.application.palaver.recipe.RecipeArticleRelation;
@@ -17,13 +18,26 @@ import de.helper.palaver.exceptions.DAOException;
 public class RecipeDAO extends AbstractDAO implements IRecipeDAO {
 	private static final long serialVersionUID = 5354127150748765486L;
 	private static RecipeDAO m_instance = null;
+	
+	private List<Recipe> m_recipeList;
 	private List<Preparation> m_preparationList;
 	private List<RecipeType> m_recipeTypeList;
+	
 	private static final String GET_ALL_PREPARATIONS = "SELECT * FROM "
 			+ TablesEnum.RECIPE_PREPARATION.getName();
 	private static final String GET_ALL_RECIPE_TYPES = "SELECT * FROM "
 			+ TablesEnum.RECIPE_TYPES.getName();
-
+	private static final String GET_ALL_RECIPES_FOR_TABLE = "SELECT " +
+			"r.id, r.name, r.kommentar, r.erstellt, " +
+			"e.id, e.benutzername, " +
+			"t.id, t.name FROM "
+			+ TablesEnum.RECIPE.getName() + " r " 
+			+ "JOIN " + TablesEnum.EMPLOYEE.getName() + " e " 
+			+ "ON r.mitarbeiter_fk = e.id " 
+			+ "JOIN " + TablesEnum.RECIPE_TYPES.getName() + " t "
+			+ "ON r.rezeptart_fk = t.id";
+	
+	
 	public static RecipeDAO getInstance() {
 		if (m_instance == null) {
 			m_instance = new RecipeDAO();
@@ -37,8 +51,36 @@ public class RecipeDAO extends AbstractDAO implements IRecipeDAO {
 	
 	/*****************/
 	/***** Recipe ****/
-	/*****************/
+	/**
+	 * @throws SQLException 
+	 * @throws DAOException 
+	 * @throws ConnectException ***************/
 
+	public List<Recipe> findAllRecipesForTable() throws ConnectException, DAOException, SQLException {
+		m_recipeList = new ArrayList<Recipe>();
+		m_resultSet = getManaged(GET_ALL_RECIPES_FOR_TABLE);
+		while (m_resultSet.next()) {
+			m_recipeList.add(setRecipeTable(m_resultSet));
+		}
+		return m_recipeList;
+	}
+	
+	private Recipe setRecipeTable(ResultSet resultSet) throws SQLException {		
+
+		Employee employee = new Employee(
+				resultSet.getLong(5),
+				resultSet.getString(6));
+		
+		RecipeType recipeType = new RecipeType(
+				resultSet.getLong(7),
+				resultSet.getString(8));
+		
+		return new Recipe(
+				resultSet.getLong(FIELD_ID),
+				resultSet.getString(FIELD_NAME),
+				resultSet.getString(FIELD_COMMENT),
+				employee, null, null, null, recipeType);
+	}
 	
 	/*****************/
 	/** Preparation **/
@@ -126,4 +168,6 @@ public class RecipeDAO extends AbstractDAO implements IRecipeDAO {
 		// TODO Auto-generated method stub
 
 	}
+
+
 }

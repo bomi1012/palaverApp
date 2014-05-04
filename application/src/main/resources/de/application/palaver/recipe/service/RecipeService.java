@@ -1,5 +1,6 @@
 package de.application.palaver.recipe.service;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -8,6 +9,8 @@ import de.application.palaver.recipe.Recipe;
 import de.application.palaver.recipe.RecipeArticleRelation;
 import de.application.palaver.recipe.RecipeType;
 import de.application.palaver.recipe.dao.RecipeDAO;
+import de.helper.palaver.exceptions.ConnectException;
+import de.helper.palaver.exceptions.DAOException;
 
 
 public class RecipeService {
@@ -66,5 +69,21 @@ public class RecipeService {
 			LOG.info("Exception: " + e.toString());
 		} 	
 		return false;
+	}
+
+	public List<Recipe> findAllRecipesForTable() {
+		try {
+			return RecipeDAO.getInstance().findAllRecipesForTable();
+		} catch (ConnectException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 }
