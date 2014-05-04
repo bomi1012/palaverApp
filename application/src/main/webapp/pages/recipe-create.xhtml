@@ -10,8 +10,11 @@
 
 <h:body>
 	<h:form id="formID">
+		<p:growl id="growl" showDetail="true" sticky="true" />
 		<div class="span16">
-			<h2 class="head_text"><i class="fa fa-pencil-square-o fa-2x" />#{msg['dictionary.recipe.create']}</h2>
+			<h2 class="head_text">
+				<i class="fa fa-pencil-square-o fa-2x" />#{msg['dictionary.recipe.create']}
+			</h2>
 			<p:separator id="separator" />
 			<!-- Infoblock -->
 			<div class="span7">
@@ -24,7 +27,7 @@
 					<div class="box-content">
 						<h:panelGrid columns="2" cellpadding="5" id="grid">
 							<h:outputText />
-							<p:message for="receptNameId" />
+							<p:message for="receptNameId" display="text"/>
 							<h:outputLabel value="#{msg['dictionary.recipe.name']}* :"
 								styleClass="information-block" />
 							<h:inputText id="receptNameId" title="recipe" style="width:95%;"
@@ -54,9 +57,10 @@
 			</div>
 			<!-- PickList -->
 			<div class="span8">
-			<div class="topForHead">
+				<div class="topForHead">
 					<h3>
-						<i class="fa fa-retweet fa-1x" /> #{msg['dictionary.preparation']}
+						<i class="fa fa-retweet fa-1x" />
+						#{msg['dictionary.preparation']}
 					</h3>
 				</div>
 				<div class="box">
@@ -75,7 +79,8 @@
 			<div class="span9" id="selected">
 				<div class="topForHead">
 					<h3>
-						<i class="fa fa-check fa-1x" /> #{msg['dictionary.text.aricleselectdown']}
+						<i class="fa fa-check fa-1x" />
+						#{msg['dictionary.text.aricleselectdown']}
 					</h3>
 				</div>
 				<p:outputPanel id="dropArea">
@@ -104,22 +109,26 @@
 			<div class="span6" id="produkts">
 				<div class="topForHead">
 					<h3>
-						<i class="fa fa-crosshairs fa-1x" /> #{msg['dictionary.text.aricleselectdrop']}
+						<i class="fa fa-crosshairs fa-1x" />
+						#{msg['dictionary.text.aricleselectdrop']}
 					</h3>
 				</div>
 				<p:dataTable id="availableArticles" var="article"
-					value="#{recipeBean.availableArticles}" filteredValue="#{recipeBean.filter}"
-					styleClass="table table-hover" scrollable="true" scrollHeight="400">
+					value="#{recipeBean.availableArticles}"
+					filteredValue="#{recipeBean.filter}" styleClass="table table-hover"
+					scrollable="true" scrollHeight="400">
 					<p:column style="width:10px">
 						<h:outputText id="dragIcon" styleClass="ui-icon ui-icon-arrow-4" />
 						<p:draggable for="dragIcon" revert="true" />
 					</p:column>
-					<p:column headerText="#{msg['dictionary.number']}" filterBy="number" filterMatchMode="contains" 
-    					filterStyleClass="filterFielTable"  width="35%">
+					<p:column headerText="#{msg['dictionary.number']}"
+						filterBy="number" filterMatchMode="contains"
+						filterStyleClass="filterFielTable" width="35%">
 						<h:outputText value="#{article.number}" />
 					</p:column>
-					<p:column headerText="#{msg['dictionary.name']}" sortBy="name" filterBy="name" filterMatchMode="contains" 
-    					filterStyleClass="filterFielTable" width="65%">
+					<p:column headerText="#{msg['dictionary.name']}" sortBy="name"
+						filterBy="name" filterMatchMode="contains"
+						filterStyleClass="filterFielTable" width="65%">
 						<h:outputText value="#{article.name}" />
 					</p:column>
 				</p:dataTable>
@@ -130,16 +139,24 @@
 					update="availableArticles table_dropped" onDrop="handleDrop" />
 			</p:droppable>
 		</div>
+		<div class="span16 command">
+			<div class="command-button-left">
+				<p:commandButton type="button" value="Zurück"
+					styleClass="btn btn-primary" disabled="disabled"
+					icon="ui-icon-white-arrow-undo-4-16"></p:commandButton>
 
-		<p:commandButton type="button"
-			value="Vorschau"
-			styleClass="btn btn-primary" disabled="disabled"/> 
-
-		<p:commandButton type="submit"
-			value="#{msg['dictionary.recipe']} #{msg['dictionary.command.save']}"
-			update="grid"
-			actionListener="#{recipeBean.createButtonActionListener}"
-			styleClass="btn btn-success" />
+				<p:commandButton type="button" value="Vorschau"
+					styleClass="btn btn-primary" disabled="disabled"
+					icon="ui-icon-white-invisible-16" />
+			</div>
+			<div class="command-button-right">
+				<p:commandButton type="submit"
+					value="#{msg['dictionary.recipe']} #{msg['dictionary.command.save']}"
+					update="grid growl"
+					actionListener="#{recipeBean.createButtonActionListener}"
+					styleClass="btn btn-success" icon="ui-icon-white-save-16" />
+			</div>
+		</div>
 	</h:form>
 </h:body>
 </html>

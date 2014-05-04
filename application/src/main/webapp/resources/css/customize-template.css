@@ -11579,3 +11579,38 @@ div.topForHead{
 	margin-left: 10px;
 	margin-top: 20px;
 }
+
+.ui-growl{
+	z-index: 1000000000 !important;
+	top: 120px !important; 
+}
+
+.command{
+	margin-bottom: 25px;
+}
+
+div.command-button-left{
+	float: left;
+}
+
+div.command-button-right{
+	float: right;
+	margin-right: 40px;
+}
+
+/************************ICONS***********************/
+/*
+http://www.iconsdb.com/white-icons/white-arrow-icons.html
+*/
+.ui-icon-white-arrow-undo-4-16{
+	background-image: url(../icons/16x16/undo-4-16.png) !important;
+	margin-left: 5px;
+}
+.ui-icon-white-invisible-16{
+	background-image: url(../icons/16x16/search-3-16.png) !important;
+	margin-left: 5px;
+}
+.ui-icon-white-save-16{
+	background-image: url(../icons/16x16/save-16.png) !important;
+	margin-left: 5px;
+}

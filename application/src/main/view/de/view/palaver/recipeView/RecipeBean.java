@@ -4,11 +4,11 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
-import javax.faces.event.ValueChangeEvent;
 
 import org.primefaces.event.DragDropEvent;
 import org.primefaces.model.DualListModel;
@@ -82,19 +82,23 @@ public class RecipeBean implements Serializable {
 				.getSessionMap().get(IBeanDictionary.AUTHORIZED_USER));
         m_recipe.setPreparationList(m_preparationList.getTarget());
         m_recipe.setRecipeArticleRelationList(m_recipeItemList);
-        boolean create = RecipeService.getInstance().createNewRecipe(m_recipe);
+        boolean isCreated = RecipeService.getInstance().createNewRecipe(m_recipe);
+        
+        if(isCreated) {
+        	FacesContext.getCurrentInstance()
+        		.addMessage("growl", new FacesMessage(FacesMessage.SEVERITY_INFO,
+        		"Erfolgreich", "Den Rezept wurde erfolgreich hinzugefügt!"));
+        } else {
+        	FacesContext.getCurrentInstance()
+	    		.addMessage("growl", new FacesMessage(FacesMessage.SEVERITY_ERROR,
+	    		"Fehlemeldung", "Den Rezept wurde wegen eine unbekannte Fehlermeldung nicht hinzugefügt!"));
+        }
     }
-    
+      
 	 public void onDrop(DragDropEvent ddEvent) {  	 
 	        Article article = ((Article) ddEvent.getData());  	  
 	        m_availableArticles.remove(article);  
 	        article.setQuantityUnit(QuantityUnitService.getInstance().findByArticleId(article.getId()));        
 	        m_recipeItemList.add(new RecipeArticleRelation(article, 0.0));
-
-	    }
-	 
-	 
-	 public void s(ValueChangeEvent e){
-			System.out.print(e.getNewValue());
-		}
+	 }	 
 }
